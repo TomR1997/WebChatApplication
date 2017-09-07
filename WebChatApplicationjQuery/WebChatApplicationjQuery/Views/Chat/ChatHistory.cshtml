@@ -1,13 +1,8 @@
-﻿
-@{
-    Layout = null;
-}
-
-@model WebChatApplicationjQuery.Models.ChatModel
+﻿@model WebChatApplicationjQuery.Models.ChatModel
 <div id="Lobby">
     <p>
         <b>@Model.users.Count online users</b>
-    </p> 
+    </p>
     @foreach (WebChatApplicationjQuery.Models.ChatModel.ChatUser user in Model.users)
     {
         @user.userName<br />

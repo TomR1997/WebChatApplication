@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model WebChatApplicationjQuery.Models.ChatModel
+<div id="Lobby">
+    <p>
+        <b>@Model.users.Count online users</b>
+    </p> 
+    @foreach (WebChatApplicationjQuery.Models.ChatModel.ChatUser user in Model.users)
+    {
+        @user.userName<br />
+    }
+</div>
+<div id="ChatHistory">
+    @foreach (WebChatApplicationjQuery.Models.ChatModel.ChatMessage msg in Model.chatHistory)
+    {
+        <p>
+            <i>@msg.when</i><br />
+            @if (msg.byUser != null)
+            {
+                <b>@(msg.byUser.userName + ":")</b> @msg.message
+            }
+            else
+            {
+                <span style="color: Red">@msg.message</span>
+            }
+        </p>
+    }
+</div>

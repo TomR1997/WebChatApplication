@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model WebChatApplicationjQuery.Models.ChatModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    ...
+    <script src="~/scripts/Chat.js"></script>
+
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+
+    <div id="YourNickname">
+    </div>
+
+    <div id="LastRefresh">
+    </div>
+
+    <div id="container">
+        <div class="box" id="LoginPanel">
+            Username :
+            <input type="text" id="txtUserName" />
+            <button id="btnLogin" value="Start">
+                Start
+            </button>
+        </div>
+    </div>
+
+    <div id="Error">
+    </div>
+
+    @Ajax.ActionLink("Login", "Index", new { thisUserLoggedOn = "" }, new AjaxOptions { UpdateTargetId = "container", OnFailure = "LoginOnFailure", OnSuccess = "LoginOnSuccess" }, new { @id = "LoginButton", @style = "visibility:hidden;" })
+
+</body>
+</html>

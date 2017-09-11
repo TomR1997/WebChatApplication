@@ -23,6 +23,7 @@
     <script>
 
         $(function () {
+            $.connection.hub.logging = true;
             var chat = $.connection.chatHub;
             chat.client.addNewMessageToPage = function (name, message) {
                 $('#discussion').append('<ul style="list-style-type:square"><li><strong style="color:red;font-style:normal;font-size:medium;text-transform:uppercase">' + htmlEncode(name) + '  ' + '<strong style="color:black;font-style:normal;font-size:medium;text-transform:lowercase">said</strong>'
@@ -41,5 +42,14 @@
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
+
+        var chatHub = $.connection.chatHub;
+        chatHub.client.sayHello = function () {
+            console.log("Hello from API");
+        }
+        chatHub.client.sayHello();
+        $.connection.hub.start().done(function () {
+            console.log("Started");
+        });
     </script>
 }   

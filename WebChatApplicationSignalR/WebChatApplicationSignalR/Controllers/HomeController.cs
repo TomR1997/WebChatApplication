@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebChatApplicationSignalR.Hubs;
 
 namespace WebChatApplicationSignalR.Controllers
 {
@@ -11,6 +12,12 @@ namespace WebChatApplicationSignalR.Controllers
         public ActionResult Chat()
         {
             return View();
+        }
+
+        public IEnumerable<string> Get()
+        {
+            ChatHub.sayHello();
+            return new string[] { "value1", "value2" };
         }
     }
 }

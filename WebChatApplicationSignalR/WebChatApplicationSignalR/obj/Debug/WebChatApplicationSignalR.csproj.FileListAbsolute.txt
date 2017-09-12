@@ -59,9 +59,3 @@ C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebC
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.csprojResolveAssemblyReference.cache
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.dll
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.pdb
-C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.dll
-C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.dll
-C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.dll
-C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.xml
-C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.xml
-C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.xml

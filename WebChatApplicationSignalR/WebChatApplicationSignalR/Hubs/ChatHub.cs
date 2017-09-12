@@ -12,6 +12,7 @@ namespace WebChatApplicationSignalR.Hubs
         public void Send(string name, string message)
         {
             Clients.All.addNewMessageToPage(name, message);
+            //Add to database
         }
 
         public static void sayHello()

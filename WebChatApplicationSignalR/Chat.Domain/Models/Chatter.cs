@@ -8,6 +8,7 @@ namespace Chat.Domain.Models
     public abstract class Chatter
     {
         #region Properties, fields
+        public List<Chat> chats { get; set; }
         public int ChatterId { get; set; }
         public string UserName { get; set; }
 
@@ -18,6 +19,7 @@ namespace Chat.Domain.Models
         {
             this.chatterId = chatterId;
             this.userName = userName;
+            chats = new List<Chat>();
         }
     }
 }

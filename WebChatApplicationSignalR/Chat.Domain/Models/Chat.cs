@@ -8,11 +8,11 @@ namespace Chat.Domain.Models
     public class Chat
     {
         #region Properties, fields
-        public List<Message> Messages { get; set; }
+        public List<Message> messages { get; private set; }
         public int Id { get; set; }
         public int ChatClientId { get; set; }
         public int ChatSupportId { get; set; }
-        enum Status { Active, Closed};
+        public enum Status { Active, Closed };
 
         private int id;
         private int chatClientId;
@@ -24,6 +24,7 @@ namespace Chat.Domain.Models
             this.id = id;
             this.chatClientId = chatClientId;
             this.chatSupportId = chatSupportId;
+            messages = new List<Message>();
         }
     }
 }

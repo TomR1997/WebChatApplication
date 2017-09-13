@@ -6,9 +6,6 @@ using System.Text;
 using Chat.Data;
 
 //TODO Replace this with domain version later
-enum ChatStatus {
-    Closed, Active
-}
 
 namespace Chat.Services.Services {
     public interface IChatService {

@@ -7,22 +7,23 @@ namespace Chat.Domain.Models
 {
     public class Chat
     {
+        #region Properties, fields
+        public List<Message> Messages { get; set; }
         public int Id { get; set; }
         public int ChatClientId { get; set; }
         public int ChatSupportId { get; set; }
-        public string Status { get; set; }
+        enum Status { Active, Closed};
 
         private int id;
         private int chatClientId;
         private int chatSupportId;
         private string status;
-
-        public Chat(int id, int chatClientId, int chatSupportId, string status)
+        #endregion
+        public Chat(int id, int chatClientId, int chatSupportId)
         {
             this.id = id;
             this.chatClientId = chatClientId;
             this.chatSupportId = chatSupportId;
-            this.status = status;
         }
     }
 }

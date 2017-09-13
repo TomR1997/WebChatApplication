@@ -316,6 +316,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chat.Data\Chat.Data.csproj">
+      <Project>{75166b9e-6323-4b97-8c94-cea0e7c59952}</Project>
+      <Name>Chat.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chat.Services\Chat.Service.csproj">
+      <Project>{c7a5d7f6-5f3e-4bde-bc4e-1cde2051882b}</Project>
+      <Name>Chat.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

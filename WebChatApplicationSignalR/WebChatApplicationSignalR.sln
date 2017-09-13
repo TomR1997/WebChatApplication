@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebChatApplicationSignalR", "WebChatApplicationSignalR\WebChatApplicationSignalR.csproj", "{DD78971B-D878-4E29-B5DA-FBC087FE2ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebChatApplicationSignalRTest", "WebChatApplicationSignalRTest\WebChatApplicationSignalRTest.csproj", "{0A0D327D-C2BC-4F03-ADA7-D83AAF57D764}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{DD78971B-D878-4E29-B5DA-FBC087FE2ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD78971B-D878-4E29-B5DA-FBC087FE2ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD78971B-D878-4E29-B5DA-FBC087FE2ACF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A0D327D-C2BC-4F03-ADA7-D83AAF57D764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A0D327D-C2BC-4F03-ADA7-D83AAF57D764}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A0D327D-C2BC-4F03-ADA7-D83AAF57D764}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A0D327D-C2BC-4F03-ADA7-D83AAF57D764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

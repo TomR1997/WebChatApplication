@@ -231,8 +231,6 @@
     <Compile Include="chatter.cs">
       <DependentUpon>MS SQL Chat EDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\chattersController.cs" />
-    <Compile Include="Controllers\WebChatWebAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
-using Chat.Domain.Models;
+using WebChat.Domain.Models;
 
 namespace WebChat.Domain.Models {
     public class Chat {

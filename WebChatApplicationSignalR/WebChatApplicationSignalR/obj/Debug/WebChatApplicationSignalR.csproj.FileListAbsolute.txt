@@ -94,7 +94,10 @@ C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Newtonsoft.Json.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Owin.dll
+C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Helpers.dll
+C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.dll
+C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Mvc.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Razor.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.Deployment.dll
@@ -115,6 +118,9 @@ C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Microsoft.Owin.Security.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Newtonsoft.Json.xml
+C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.xml
+C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.xml
+C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Razor.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.Deployment.xml
@@ -124,9 +130,3 @@ C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.csprojResolveAssemblyReference.cache
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.pdb
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.dll
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.dll
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.dll
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.xml
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.xml
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.xml

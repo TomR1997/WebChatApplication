@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using WebChat.Domain.Models;
 
-namespace Chat.Domain.Models {
+namespace WebChat.Domain.Models {
     public class ChatSupporter : Chatter {
         #region Properties, fields
         public string Department { get; set; }

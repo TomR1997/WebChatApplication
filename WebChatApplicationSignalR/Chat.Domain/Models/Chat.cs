@@ -10,8 +10,9 @@ namespace WebChat.Domain.Models {
         #region Properties, fields
         public List<Message> messages { get; private set; }
         public int Id { get; set; }
-        public int ChatClientId { get; set; }
-        public int ChatSupportId { get; set; }
+        public int ChatClient { get; set; }
+        public int ChatSupporter { get; set; }
+        public ChatStatus Status { get; set; }
 
         private int id;
         private ChatClient chatClient;

@@ -12,17 +12,43 @@ namespace WebChat.Service.Services {
     public class ChatService : IChatService {
         private ChatDbEntities db = new ChatDbEntities();
 
+        private Status ParseStatus(string status)
+        {
+            Status parsedStatus;
+            if (string.Equals(status, Status.Active.ToString(), StringComparison.CurrentCultureIgnoreCase))
+            {
+                parsedStatus = Status.Active;
+                return parsedStatus;
+            }
+            else if (string.Equals(status, Status.Closed.ToString(), StringComparison.CurrentCultureIgnoreCase))
+            {
+                parsedStatus = Status.Closed;
+                return parsedStatus;
+            }
+            else
+                //TODO Make this a custom exception
+                throw new Exception("Could not parse status!");
+        }
+
+
         private Chat DbChatToChat(chat dbChat)
         {
             return new Chat(
                 dbChat.ChatId,
                 new ChatClient(dbChat.chatclient.ChatterId, dbChat.chatclient.chatter.Screenname, dbChat.chatclient.Branch),
-                new ChatSupporter(dbChat.chatsupporter.ChatterId, dbChat.chatsupporter.chatter.Screenname, dbChat.chatsupporter.Department));
+                new ChatSupporter(dbChat.chatsupporter.ChatterId, dbChat.chatsupporter.chatter.Screenname, dbChat.chatsupporter.Department),
+                ParseStatus(dbChat.Status),
+                GetMessagesByChatId(dbChat.ChatId)
+                );
         }
 
         public IEnumerable<Chat> GetAllChats()
         {
-            return db.chats.Select(dbChat => DbChatToChat(dbChat)).ToList();
+            var chats = new List<Chat>();
+            //TODO For some reason if this is converted to LINQ expression it fails, fix this
+            foreach (var dbChat in db.chats)
+                chats.Add(DbChatToChat(dbChat));
+            return chats;
         }
 
         public IEnumerable<Chat> GetChatsByChatterId(int chatterId)
@@ -37,10 +63,22 @@ namespace WebChat.Service.Services {
             throw new NotImplementedException();
         }
 
+        private Message DbMessageToMessage(message dbMessage)
+        {
+            return new Message
+                (
+
+                );
+        }
+
         public IEnumerable<Message> GetAllMessages()
         {
-            //return db.messages;
-            throw new NotImplementedException();
+            var dbMessages = db.messages;
+            var messages = new List<Message>();
+            foreach (var dbMessage in dbMessages)
+            {
+
+            }
         }
 
         public IEnumerable<Message> GetMessagesByChatId(int chatId)
@@ -51,6 +89,7 @@ namespace WebChat.Service.Services {
             //    where message.ChatId == chatId
             //    select message;
             //return queryResult;
+            var messages = GetAllMessages();
             throw new NotImplementedException();
         }
 
@@ -59,7 +98,7 @@ namespace WebChat.Service.Services {
             //var chats = GetAllChats();
             //var openChats =
             //    from chat in chats
-            //    where string.Equals(chat.Status, ChatStatus.Active.ToString(), StringComparison.CurrentCultureIgnoreCase)
+            //    where string.Equals(chat.Status, Status.Active.ToString(), StringComparison.CurrentCultureIgnoreCase)
             //    select chat;
             //return openChats;
             throw new NotImplementedException();
@@ -74,7 +113,7 @@ namespace WebChat.Service.Services {
                 {
                     ChatClientId = chatClientId,
                     ChatSupporterId = chatSupporterId,
-                    Status = ChatStatus.Active.ToString().ToUpper()
+                    Status = Status.Active.ToString().ToUpper()
                 };
                 db.chats.Add(chat);
                 db.SaveChanges();
@@ -101,7 +140,7 @@ namespace WebChat.Service.Services {
         public void CloseChat(int chatId)
         {
             var chat = GetChatByChatId(chatId);
-            chat.Status = ChatStatus.Closed.ToString().ToUpper();
+            chat.Status = Status.Closed.ToString().ToUpper();
             db.chats.Attach(chat);
             db.SaveChanges();
         }

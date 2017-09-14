@@ -6,27 +6,34 @@ using System.Web;
 using WebChat.Domain.Models;
 
 namespace WebChat.Domain.Models {
+    [DataContract]
     public class Chat {
         #region Properties, fields
+        [DataMember]
         public List<Message> messages { get; private set; }
+        [DataMember]
         public int Id { get; set; }
+        [DataMember]
         public int ChatClient { get; set; }
+        [DataMember]
         public int ChatSupporter { get; set; }
-        public ChatStatus Status { get; set; }
+        [DataMember]
+        public Status Status { get; set; }
+        [DataMember]
 
         private int id;
         private ChatClient chatClient;
         private ChatSupporter chatSupporter;
-        private ChatStatus status;
+        private Status status;
 
         #endregion
-        public Chat(int id, ChatClient chatClient, ChatSupporter chatSupporter)
+        public Chat(int id, ChatClient chatClient, ChatSupporter chatSupporter, Status status, List<Message> messages)
         {
             this.id = id;
             this.chatClient = chatClient;
             this.chatSupporter = chatSupporter;
-            messages = new List<Message>();
-            status = ChatStatus.Active;
+            this.messages = messages;
+            this.status = status;
         }
     }
 }

@@ -8,14 +8,17 @@ using Chat.Data;
 using Chat.Service.Services;
 
 namespace Chat.WebAPI.Controllers {
-    [Authorize]
-    [RoutePrefix("Api/Chat")]
     public class ChatController : ApiController {
         private IChatService chatService = new ChatService();
 
-        public IEnumerable<chat> GetAllChats()
+        public IEnumerable<chat> Get()
         {
             return chatService.GetAllChats();
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            return Ok(chatService.GetChatsByChatterId(id));
         }
     }
 }

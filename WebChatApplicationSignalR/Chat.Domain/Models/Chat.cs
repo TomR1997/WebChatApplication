@@ -5,33 +5,26 @@ using System.Runtime.Serialization;
 using System.Web;
 
 namespace WebChat.Domain.Models {
-    [DataContract]
     public class Chat {
         #region Properties, fields
-        [DataMember]
         public List<Message> messages { get; private set; }
-        [DataMember]
         public int Id { get; set; }
-        [DataMember]
         public int ChatClientId { get; set; }
-        [DataMember]
         public int ChatSupportId { get; set; }
 
-        [DataMember]
         private int id;
-        [DataMember]
-        private int chatClientId;
-        [DataMember]
-        private int chatSupportId;
-        [DataMember]
-        private string status;
+        private ChatClient chatClient;
+        private ChatSupporter chatSupporter;
+        private ChatStatus status;
+
         #endregion
-        public Chat(int id, int chatClientId, int chatSupportId)
+        public Chat(int id, ChatClient chatClient, ChatSupporter chatSupporter)
         {
             this.id = id;
-            this.chatClientId = chatClientId;
-            this.chatSupportId = chatSupportId;
+            this.chatClient = chatClient;
+            this.chatSupporter = chatSupporter;
             messages = new List<Message>();
+            status = ChatStatus.Active;
         }
     }
 }

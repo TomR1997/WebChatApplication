@@ -1,1 +1,1 @@
-﻿public enum ChatStatus { Active, Closed };
+﻿public enum ChatStatus { Active, Closed }

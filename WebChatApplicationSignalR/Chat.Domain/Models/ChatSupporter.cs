@@ -5,14 +5,14 @@ using System.Web;
 
 namespace WebChat.Domain.Models
 {
-    public class ChatSupport : Chatter
+    public class ChatSupporter : Chatter
     {
         #region Properties, fields
         public string Department { get; set; }
 
         private string department;
         #endregion
-        public ChatSupport(int chatterId, string userName, string department) : base(chatterId, userName)
+        public ChatSupporter(int chatterId, string userName, string department) : base(chatterId, userName)
         {
             this.department = department;
         }

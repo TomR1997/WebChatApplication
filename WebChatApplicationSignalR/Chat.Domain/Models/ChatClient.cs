@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebChat.Domain.Models
-{
-    public class ChatClient : Chatter
-    {
+namespace WebChat.Domain.Models {
+    public class ChatClient : Chatter {
         #region Properties, fields
         public string Branch { get; set; }
 

@@ -127,6 +127,5 @@ C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.Razor.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Helpers.xml
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Mvc.xml
-C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.csprojResolveAssemblyReference.cache
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.dll
 C:\Users\Tom Ruijs\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\obj\Debug\WebChatApplicationSignalR.pdb

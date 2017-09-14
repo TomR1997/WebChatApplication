@@ -10,7 +10,7 @@ using WebChat.Service.Services;
 
 namespace WebChat.WebAPI.Controllers {
     public class ChatController : ApiController {
-        private IChatServerService _chatServerService = new ChatServerService();
+        private IChatService _chatServerService = new ChatService();
 
         public IEnumerable<chat> Get()
         {

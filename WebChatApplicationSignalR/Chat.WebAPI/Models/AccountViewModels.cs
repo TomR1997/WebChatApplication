@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chat.WebAPI.Models
+namespace WebChat.WebAPI.Models
 {
     // Models returned by AccountController actions.
 

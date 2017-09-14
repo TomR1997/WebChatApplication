@@ -318,13 +318,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chat.Data\Chat.Data.csproj">
+    <ProjectReference Include="..\Chat.Data\WebChat.Data.csproj">
       <Project>{75166b9e-6323-4b97-8c94-cea0e7c59952}</Project>
-      <Name>Chat.Data</Name>
+      <Name>WebChat.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chat.Services\Chat.Service.csproj">
+    <ProjectReference Include="..\Chat.Domain\WebChat.Domain.csproj">
+      <Project>{2b1537b3-95e5-4d65-b7a4-604bf82fe152}</Project>
+      <Name>WebChat.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chat.Services\WebChat.Service.csproj">
       <Project>{c7a5d7f6-5f3e-4bde-bc4e-1cde2051882b}</Project>
-      <Name>Chat.Service</Name>
+      <Name>WebChat.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

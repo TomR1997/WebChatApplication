@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Chat.WebAPI.Startup))]
+[assembly: OwinStartup(typeof(WebChat.WebAPI.Startup))]
 
-namespace Chat.WebAPI
+namespace WebChat.WebAPI
 {
     public partial class Startup
     {

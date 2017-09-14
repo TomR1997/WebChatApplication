@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Chat.Domain.Models {
+namespace WebChat.Domain.Models {
     public class Chat {
         #region Properties, fields
         public List<Message> messages { get; private set; }

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace Chat.WebAPI.Models
+namespace WebChat.WebAPI.Models
 {
     // Models used as parameters to AccountController actions.
 

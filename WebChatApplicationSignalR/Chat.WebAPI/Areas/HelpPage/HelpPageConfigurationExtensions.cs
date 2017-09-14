@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using Chat.WebAPI.Areas.HelpPage.ModelDescriptions;
-using Chat.WebAPI.Areas.HelpPage.Models;
+using WebChat.WebAPI.Areas.HelpPage.ModelDescriptions;
+using WebChat.WebAPI.Areas.HelpPage.Models;
 
-namespace Chat.WebAPI.Areas.HelpPage
+namespace WebChat.WebAPI.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

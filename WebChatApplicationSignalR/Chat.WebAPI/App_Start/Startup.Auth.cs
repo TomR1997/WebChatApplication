@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Chat.WebAPI.Providers;
-using Chat.WebAPI.Models;
+using WebChat.WebAPI.Models;
+using WebChat.WebAPI.Providers;
 
-namespace Chat.WebAPI
+namespace WebChat.WebAPI
 {
     public partial class Startup
     {

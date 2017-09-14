@@ -13,11 +13,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using Chat.WebAPI.Models;
-using Chat.WebAPI.Providers;
-using Chat.WebAPI.Results;
+using WebChat.WebAPI.Models;
+using WebChat.WebAPI.Providers;
+using WebChat.WebAPI.Results;
 
-namespace Chat.WebAPI.Controllers
+namespace WebChat.WebAPI.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

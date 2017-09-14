@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Chat.WebAPI.Areas.HelpPage.ModelDescriptions
+namespace WebChat.WebAPI.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterDescription
     {

@@ -4,21 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Chat.Data;
-using Chat.Service.Services;
+using WebChat.Data;
+using WebChat.Domain.Models;
+using WebChat.Service.Services;
 
-namespace Chat.WebAPI.Controllers {
+namespace WebChat.WebAPI.Controllers {
     public class ChatController : ApiController {
         private IChatService chatService = new ChatService();
-        public IEnumerable<Domain.Models.Chat> Get()
+
+        public IEnumerable<Chat> Get()
         {
-            var chats = chatService.GetAllChats();
-            var result = new List<Domain.Models.Chat>();
-            foreach (var chat in chats)
-            {
-                result.Add(new Domain.Models.Chat(chat.ChatId, chat.ChatClientId, chat.ChatSupporterId));
-            }
-            return result;
+            return chatService.GetAllChats().Select(chat => new Chat(chat.ChatId, chat.ChatClientId, chat.ChatSupporterId)).ToList();
         }
     }
 }

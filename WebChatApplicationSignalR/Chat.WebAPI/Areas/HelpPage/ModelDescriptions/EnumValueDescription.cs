@@ -1,4 +1,4 @@
-namespace Chat.WebAPI.Areas.HelpPage.ModelDescriptions
+namespace WebChat.WebAPI.Areas.HelpPage.ModelDescriptions
 {
     public class EnumValueDescription
     {

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Chat.WebAPI.Controllers
+namespace WebChat.WebAPI.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

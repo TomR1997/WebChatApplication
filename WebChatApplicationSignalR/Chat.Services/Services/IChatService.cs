@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Chat.Data;
+using WebChat.Data;
 
 //TODO Replace this with domain version later
 
-namespace Chat.Service.Services {
+namespace WebChat.Service.Services {
     public interface IChatService {
         IEnumerable<chat> GetAllChats();
         IEnumerable<chat> GetChatsByChatterId(int chatterId);

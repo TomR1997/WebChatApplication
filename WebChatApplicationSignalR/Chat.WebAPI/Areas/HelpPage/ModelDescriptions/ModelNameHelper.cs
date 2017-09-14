@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace Chat.WebAPI.Areas.HelpPage.ModelDescriptions
+namespace WebChat.WebAPI.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

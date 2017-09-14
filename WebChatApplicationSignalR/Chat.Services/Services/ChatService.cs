@@ -5,9 +5,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
-using Chat.Data;
+using WebChat.Data;
 
-namespace Chat.Service.Services {
+namespace WebChat.Service.Services {
     public class ChatService : IChatService {
         private ChatDbEntities db = new ChatDbEntities();
 

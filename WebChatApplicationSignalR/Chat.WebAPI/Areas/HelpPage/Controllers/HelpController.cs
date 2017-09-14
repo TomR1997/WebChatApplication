@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using Chat.WebAPI.Areas.HelpPage.ModelDescriptions;
-using Chat.WebAPI.Areas.HelpPage.Models;
+using WebChat.WebAPI.Areas.HelpPage.ModelDescriptions;
+using WebChat.WebAPI.Areas.HelpPage.Models;
 
-namespace Chat.WebAPI.Areas.HelpPage.Controllers
+namespace WebChat.WebAPI.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

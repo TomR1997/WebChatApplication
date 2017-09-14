@@ -122,13 +122,13 @@
     <Compile Include="Services\IChatService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chat.Data\Chat.Data.csproj">
+    <ProjectReference Include="..\Chat.Data\WebChat.Data.csproj">
       <Project>{75166b9e-6323-4b97-8c94-cea0e7c59952}</Project>
-      <Name>Chat.Data</Name>
+      <Name>WebChat.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chat.Domain\Chat.Domain.csproj">
+    <ProjectReference Include="..\Chat.Domain\WebChat.Domain.csproj">
       <Project>{2b1537b3-95e5-4d65-b7a4-604bf82fe152}</Project>
-      <Name>Chat.Domain</Name>
+      <Name>WebChat.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

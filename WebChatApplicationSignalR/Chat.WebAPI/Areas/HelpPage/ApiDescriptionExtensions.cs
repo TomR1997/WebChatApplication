@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace Chat.WebAPI.Areas.HelpPage
+namespace WebChat.WebAPI.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

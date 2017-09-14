@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Chat.Data
+namespace WebChat.Data
 {
     using System;
     using System.Collections.Generic;

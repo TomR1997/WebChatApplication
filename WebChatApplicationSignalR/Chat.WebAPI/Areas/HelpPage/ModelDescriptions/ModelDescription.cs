@@ -1,6 +1,6 @@
 using System;
 
-namespace Chat.WebAPI.Areas.HelpPage.ModelDescriptions
+namespace WebChat.WebAPI.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

@@ -10,21 +10,45 @@ namespace WebChat.Domain.Models {
     public class Chat {
         #region Properties, fields
         [DataMember]
-        public List<Message> messages { get; private set; }
+        private List<Message> messages;
         [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        public int ChatClient { get; set; }
-        [DataMember]
-        public int ChatSupporter { get; set; }
-        [DataMember]
-        public Status Status { get; set; }
-        [DataMember]
-
         private int id;
+        [DataMember]
         private ChatClient chatClient;
+        [DataMember]
         private ChatSupporter chatSupporter;
+        [DataMember]
         private Status status;
+
+        public List<Message> Messages
+        {
+            get { return messages; }
+            set { messages = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public ChatClient ChatClient
+        {
+            get { return chatClient; }
+            set { chatClient = value; }
+        }
+
+        public ChatSupporter ChatSupporter
+        {
+            get { return chatSupporter; }
+            set { chatSupporter = value; }
+        }
+
+        public Status Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
 
         #endregion
         public Chat(int id, ChatClient chatClient, ChatSupporter chatSupporter, Status status, List<Message> messages)

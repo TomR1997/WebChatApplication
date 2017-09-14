@@ -38,7 +38,7 @@ namespace WebChat.Service.Services {
                 new ChatClient(dbChat.chatclient.ChatterId, dbChat.chatclient.chatter.Screenname, dbChat.chatclient.Branch),
                 new ChatSupporter(dbChat.chatsupporter.ChatterId, dbChat.chatsupporter.chatter.Screenname, dbChat.chatsupporter.Department),
                 ParseStatus(dbChat.Status),
-                GetMessagesByChatId(dbChat.ChatId)
+                GetMessagesByChatId(dbChat.ChatId).ToList()
                 );
         }
 
@@ -65,9 +65,13 @@ namespace WebChat.Service.Services {
 
         private Message DbMessageToMessage(message dbMessage)
         {
-            return new Message
-                (
-
+            return new Message(
+                dbMessage.ChatId,
+                dbMessage.SenderId,
+                dbMessage.ReceiverId,
+                dbMessage.TimeSend,
+                dbMessage.Message1,
+                dbMessage.Read
                 );
         }
 
@@ -77,8 +81,9 @@ namespace WebChat.Service.Services {
             var messages = new List<Message>();
             foreach (var dbMessage in dbMessages)
             {
-
+                messages.Add(DbMessageToMessage(dbMessage));
             }
+            return messages;
         }
 
         public IEnumerable<Message> GetMessagesByChatId(int chatId)
@@ -90,7 +95,11 @@ namespace WebChat.Service.Services {
             //    select message;
             //return queryResult;
             var messages = GetAllMessages();
-            throw new NotImplementedException();
+            var queryResult =
+                from message in messages
+                where message.ChatId == chatId
+                select message;
+            return queryResult;
         }
 
         private IEnumerable<chat> GetActiveChats()

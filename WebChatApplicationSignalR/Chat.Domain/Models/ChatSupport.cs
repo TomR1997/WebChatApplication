@@ -11,7 +11,7 @@ namespace WebChat.Domain.Models {
 
         private string department;
         #endregion
-        public ChatSupporter(int chatterId, string userName, string department) : base(chatterId, userName)
+        public ChatSupporter(int chatterId, string screenName, string department) : base(chatterId, screenName)
         {
             this.department = department;
         }

@@ -4,21 +4,24 @@ using System.Linq;
 using System.Web;
 
 namespace WebChat.Domain.Models {
+    //TODO Remove the commented out code?
+
     public abstract class Chatter {
         #region Properties, fields
-        public List<Chat> chats { get; set; }
+        //public List<Chat> chats { get; set; }
         public int ChatterId { get; set; }
-        public string UserName { get; set; }
+        public string Screenname { get; set; }
 
         private int chatterId;
-        private string userName;
+        private string screenName;
         #endregion
 
-        public Chatter(int chatterId, string userName)
+        public Chatter(int chatterId, string screenName)
         {
             this.chatterId = chatterId;
-            this.userName = userName;
-            chats = new List<Chat>();
+            this.screenName = screenName;
+
+            //chats = new List<Chat>();
         }
     }
 }

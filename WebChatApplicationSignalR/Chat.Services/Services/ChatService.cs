@@ -6,49 +6,63 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using WebChat.Data;
+using WebChat.Domain.Models;
 
 namespace WebChat.Service.Services {
     public class ChatService : IChatService {
         private ChatDbEntities db = new ChatDbEntities();
 
-        public IEnumerable<chat> GetAllChats()
+        private Chat DbChatToChat(chat dbChat)
         {
-            return db.chats;
+            return new Chat(
+                dbChat.ChatId,
+                new ChatClient(dbChat.chatclient.ChatterId, dbChat.chatclient.chatter.Screenname, dbChat.chatclient.Branch),
+                new ChatSupporter(dbChat.chatsupporter.ChatterId, dbChat.chatsupporter.chatter.Screenname, dbChat.chatsupporter.Department));
         }
 
-        public IEnumerable<chat> GetChatsByChatterId(int chatterId)
+        public IEnumerable<Chat> GetAllChats()
         {
-            var chats = GetAllChats();
-            var queryResult =
-                from chat in chats
-                where chat.ChatSupporterId == chatterId || chat.ChatClientId == chatterId
-                select chat;
-            return queryResult;
+            return db.chats.Select(dbChat => DbChatToChat(dbChat)).ToList();
         }
 
-        public IEnumerable<message> GetAllMessages()
+        public IEnumerable<Chat> GetChatsByChatterId(int chatterId)
         {
-            return db.messages;
+
+            //var chats = GetAllChats();
+            //var queryResult =
+            //    from chat in chats
+            //    where chat.ChatSupporterId == chatterId || chat.ChatClientId == chatterId
+            //    select chat;
+            //return queryResult;
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<message> GetMessagesByChatId(int chatId)
+        public IEnumerable<Message> GetAllMessages()
         {
-            var messages = GetAllMessages();
-            var queryResult =
-                from message in messages
-                where message.ChatId == chatId
-                select message;
-            return queryResult;
+            //return db.messages;
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Message> GetMessagesByChatId(int chatId)
+        {
+            //var messages = GetAllMessages();
+            //var queryResult =
+            //    from message in messages
+            //    where message.ChatId == chatId
+            //    select message;
+            //return queryResult;
+            throw new NotImplementedException();
         }
 
         private IEnumerable<chat> GetActiveChats()
         {
-            var chats = GetAllChats();
-            var openChats =
-                from chat in chats
-                where string.Equals(chat.Status, ChatStatus.Active.ToString(), StringComparison.CurrentCultureIgnoreCase)
-                select chat;
-            return openChats;
+            //var chats = GetAllChats();
+            //var openChats =
+            //    from chat in chats
+            //    where string.Equals(chat.Status, ChatStatus.Active.ToString(), StringComparison.CurrentCultureIgnoreCase)
+            //    select chat;
+            //return openChats;
+            throw new NotImplementedException();
         }
 
         public void CreateChats(int chatClientId, int chatSupporterId)
@@ -74,13 +88,14 @@ namespace WebChat.Service.Services {
 
         private chat GetChatByChatId(int chatId)
         {
-            var chats = GetAllChats();
-            var queryResult =
-                from chat in chats
-                where chat.ChatId == chatId
-                select chat;
-            var result = queryResult.FirstOrDefault();
-            return result;
+            //var chats = GetAllChats();
+            //var queryResult =
+            //    from chat in chats
+            //    where chat.ChatId == chatId
+            //    select chat;
+            //var result = queryResult.FirstOrDefault();
+            //return result;
+            throw new NotImplementedException();
         }
 
         public void CloseChat(int chatId)

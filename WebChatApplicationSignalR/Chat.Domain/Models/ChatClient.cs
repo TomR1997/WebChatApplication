@@ -10,7 +10,7 @@ namespace WebChat.Domain.Models {
 
         private string branch;
         #endregion
-        public ChatClient(int chatterId, string userName, string branch) : base(chatterId, userName)
+        public ChatClient(int chatterId, string screenName, string branch) : base(chatterId, screenName)
         {
             this.branch = branch;
         }

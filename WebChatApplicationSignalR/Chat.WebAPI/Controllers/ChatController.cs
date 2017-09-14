@@ -10,12 +10,11 @@ using WebChat.Service.Services;
 
 namespace WebChat.WebAPI.Controllers {
     public class ChatController : ApiController {
-        private IChatService _chatServerService = new ChatService();
+        private readonly IChatService _chatServerService = new ChatService();
 
         public IEnumerable<Chat> Get()
         {
-            //return _chatServerService.GetAllChats().Select(chat => new Chat(chat.ChatId, new ChatClient(chat.ChatClientId), chat.ChatSupporterId)).ToList();
-            throw new NotImplementedException();
+            return _chatServerService.GetAllChats();
         }
     }
 }

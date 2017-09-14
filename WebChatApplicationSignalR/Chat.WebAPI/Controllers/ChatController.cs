@@ -12,9 +12,10 @@ namespace WebChat.WebAPI.Controllers {
     public class ChatController : ApiController {
         private IChatService chatService = new ChatService();
 
-        public IEnumerable<Chat> Get()
+        public IEnumerable<chat> Get()
         {
-            return chatService.GetAllChats().Select(chat => new Chat(chat.ChatId, chat.ChatClientId, chat.ChatSupporterId)).ToList();
+            return chatService.GetAllChats();
+            //return chatService.GetAllChats().Select(chat => new Chat(chat.ChatId, chat.ChatClientId, chat.ChatSupporterId)).ToList();
         }
     }
 }

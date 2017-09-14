@@ -112,10 +112,10 @@
   <ItemGroup>
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\ChatClient.cs" />
-    <Compile Include="Models\ChatStatus.cs" />
     <Compile Include="Models\ChatSupport.cs" />
     <Compile Include="Models\Chatter.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>

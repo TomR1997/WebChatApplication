@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using Chat.Data;
 
-namespace Chat.Services.Services {
+namespace Chat.Service.Services {
     public class ChatService : IChatService {
         private ChatDbEntities db = new ChatDbEntities();
 

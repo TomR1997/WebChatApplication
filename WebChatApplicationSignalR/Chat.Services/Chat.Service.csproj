@@ -126,6 +126,10 @@
       <Project>{75166b9e-6323-4b97-8c94-cea0e7c59952}</Project>
       <Name>Chat.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Chat.Domain\Chat.Domain.csproj">
+      <Project>{2b1537b3-95e5-4d65-b7a4-604bf82fe152}</Project>
+      <Name>Chat.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

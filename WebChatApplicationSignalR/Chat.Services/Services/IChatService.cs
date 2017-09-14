@@ -7,7 +7,7 @@ using Chat.Data;
 
 //TODO Replace this with domain version later
 
-namespace Chat.Services.Services {
+namespace Chat.Service.Services {
     public interface IChatService {
         IEnumerable<chat> GetAllChats();
         IEnumerable<chat> GetChatsByChatterId(int chatterId);

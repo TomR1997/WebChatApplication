@@ -10,15 +10,15 @@ using Chat.Service.Services;
 namespace Chat.WebAPI.Controllers {
     public class ChatController : ApiController {
         private IChatService chatService = new ChatService();
-
-        public IEnumerable<chat> Get()
+        public IEnumerable<Domain.Models.Chat> Get()
         {
-            return chatService.GetAllChats();
-        }
-
-        public IHttpActionResult Get(int id)
-        {
-            return Ok(chatService.GetChatsByChatterId(id));
+            var chats = chatService.GetAllChats();
+            var result = new List<Domain.Models.Chat>();
+            foreach (var chat in chats)
+            {
+                result.Add(new Domain.Models.Chat(chat.ChatId, chat.ChatClientId, chat.ChatSupporterId));
+            }
+            return result;
         }
     }
 }

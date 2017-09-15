@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
@@ -223,9 +227,36 @@ namespace WebChat.Service.Services {
             db.SaveChanges();
         }
 
+
+        //TODO Fix this message and add it to the interface and api
         public void MarkAsRead(int chatId, int receiverId)
         {
-            throw new NotImplementedException();
+            foreach (var dbMessage in db.messages)
+            {
+                db = new ChatDbEntities();
+                if (dbMessage.ChatId == chatId && receiverId == dbMessage.ReceiverId && !dbMessage.Read)
+                {
+                    dbMessage.Read = true;
+                    db.Entry(dbMessage).State = EntityState.Modified;
+                    db.messages.Attach(dbMessage);
+
+
+                    var saveFailed = false;
+                    do
+                    {
+                        saveFailed = false;
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (DbUpdateConcurrencyException e)
+                        {
+                            break;
+                            saveFailed = true;
+                        }
+                    } while (saveFailed);
+                }
+            }
         }
     }
 }

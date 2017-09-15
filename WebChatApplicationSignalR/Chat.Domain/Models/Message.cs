@@ -17,7 +17,7 @@ namespace WebChat.Domain.Models {
         [DataMember]
         private DateTime timeSend;
         [DataMember]
-        private string messageContent;
+        private string _content;
         [DataMember]
         private bool read;
 
@@ -45,10 +45,10 @@ namespace WebChat.Domain.Models {
             set { timeSend = value; }
         }
 
-        public string MessageContent
+        public string Content
         {
-            get { return messageContent; }
-            set { messageContent = value; }
+            get { return _content; }
+            set { _content = value; }
         }
 
         public bool Read
@@ -59,13 +59,13 @@ namespace WebChat.Domain.Models {
 
         #endregion
 
-        public Message(int chatId, int senderId, int receiverId, DateTime timeSend, string messageContent, bool read)
+        public Message(int chatId, int senderId, int receiverId, DateTime timeSend, string _content, bool read)
         {
             this.chatId = chatId;
             this.senderId = senderId;
             this.receiverId = receiverId;
             this.timeSend = timeSend;
-            this.messageContent = messageContent;
+            this._content = _content;
             this.read = read;
         }
     }

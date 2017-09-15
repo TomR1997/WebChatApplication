@@ -56,5 +56,12 @@ namespace WebChat.WebAPI.Controllers {
         {
             _chatServerService.SendMessage(content, senderId, receiverId);
         }
+
+        [Route("MarkAsRead/{chatId}/{receiverId}"), HttpGet]
+        public void MarkAsRead(int chatId, int receiverId)
+        {
+            throw new NotImplementedException();
+            //_chatServerService.MarkAsRead(chatId, receiverId);
+        }
     }
 }

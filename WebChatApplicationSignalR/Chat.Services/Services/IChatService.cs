@@ -19,11 +19,10 @@ namespace WebChat.Service.Services {
 
         void CreateChat(int chatClientId, int chatSupporterId);
         void CloseChat(int chatId);
-        //DEZE IS NOG BROKEN
         void SendMessage(string content, int senderId, int receiverId);
         void SendMessage(string content, int chatId, int senderId, int receiverId);
 
-        void MarkAsRead(int chatId, int receiverId);
+        //void MarkAsRead(int chatId, int receiverId);
 
         //virtual GetUserData(UserData userData);
 

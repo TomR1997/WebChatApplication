@@ -31,7 +31,6 @@ namespace WebChat.Service.Services {
                 throw new Exception("Could not parse status!");
         }
 
-
         private Chat DbChatToChat(chat dbChat)
         {
             return new Chat(
@@ -96,19 +95,19 @@ namespace WebChat.Service.Services {
             return queryResult;
         }
 
-        private IEnumerable<Chat> GetActiveChats()
+        private IEnumerable<Chat> GetActiveChats(int chatClientId, int chatSupporterId)
         {
             var chats = GetAllChats();
             var openChats =
                 from chat in chats
-                where chat.Status == Status.Active
+                where chat.Status == Status.Active && chat.ChatClient.ChatterId == chatClientId && chat.ChatSupporter.ChatterId == chatSupporterId
                 select chat;
             return openChats;
         }
 
-        public void CreateChats(int chatClientId, int chatSupporterId)
+        public bool CreateChat(int chatClientId, int chatSupporterId)
         {
-            var activeChats = GetActiveChats();
+            var activeChats = GetActiveChats(chatClientId, chatSupporterId);
             if (!activeChats.Any())
             {
                 var chat = new chat
@@ -119,11 +118,12 @@ namespace WebChat.Service.Services {
                 };
                 db.chats.Add(chat);
                 db.SaveChanges();
+                //TODO Send default message of support if it exist
+                return true;
             }
             else
             {
-                //TODO Change this to a custom exception
-                throw new Exception("There is still a chat left open!");
+                return false;
             }
         }
 

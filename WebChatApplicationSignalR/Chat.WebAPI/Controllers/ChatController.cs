@@ -22,7 +22,21 @@ namespace WebChat.WebAPI.Controllers {
         [Route("GetChatByChatId/{id}"), HttpGet, ResponseType(typeof(Chat))]
         public IHttpActionResult GetChatByChatId(int id)
         {
-            return Ok(_chatServerService.GetChatsByChatterId(id));
+            var chats = _chatServerService.GetChatsByChatterId(id);
+            if (chats.Any())
+            {
+                return Ok(chats.FirstOrDefault());
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [Route("CreateChat/{chatClientId}/{chatSupporterId}"), HttpGet]
+        public bool CreateChat(int chatClientId, int chatSupporterId)
+        {
+            return _chatServerService.CreateChat(chatClientId, chatSupporterId);
         }
 
         [Route("CloseChatByChatId/{id}"), HttpGet]
@@ -31,5 +45,10 @@ namespace WebChat.WebAPI.Controllers {
             _chatServerService.CloseChat(id);
         }
 
+        [Route("SendMessage/{content}/{chatId}/{senderId}/{receiverId}"), HttpGet]
+        public void SendMessage(string content, int chatId, int senderId, int receiverId)
+        {
+            _chatServerService.SendMessage(content, chatId, senderId, receiverId);
+        }
     }
 }

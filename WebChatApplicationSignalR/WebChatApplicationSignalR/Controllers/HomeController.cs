@@ -5,10 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebChatApplicationSignalR.Hubs;
 
-namespace WebChatApplicationSignalR.Controllers
-{
-    public class HomeController : Controller
-    {
+namespace WebChatApplicationSignalR.Controllers {
+    public class HomeController : Controller {
         public ActionResult Chat()
         {
             return View();
@@ -16,7 +14,6 @@ namespace WebChatApplicationSignalR.Controllers
 
         public IEnumerable<string> Get()
         {
-            ChatHub.sayHello();
             return new string[] { "value1", "value2" };
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI.WebControls;
 using WebChat.Data;
@@ -98,11 +99,11 @@ namespace WebChat.Service.Services {
         private IEnumerable<Chat> GetActiveChats(int chatClientId, int chatSupporterId)
         {
             var chats = GetAllChats();
-            var openChats =
+            var getActiveChats =
                 from chat in chats
                 where chat.Status == Status.Active && chat.ChatClient.ChatterId == chatClientId && chat.ChatSupporter.ChatterId == chatSupporterId
                 select chat;
-            return openChats;
+            return getActiveChats;
         }
 
         public bool CreateChat(int chatClientId, int chatSupporterId)
@@ -169,20 +170,56 @@ namespace WebChat.Service.Services {
                 Read = false,
                 TimeSend = DateTime.UtcNow
             };
-            db.messages.AddOrUpdate(dbMessage);
+            db.messages.Add(dbMessage);
             db.SaveChanges();
+        }
+
+        private IEnumerable<Chat> GetAllActiveChats()
+        {
+            var chats = GetAllChats();
+            var activeChats =
+                from chat in chats
+                where chat.Status == Status.Active
+                select chat;
+            return activeChats;
+        }
+
+        private IEnumerable<Chat> GetActiveChatByChatterIds(int a, int b)
+        {
+            var activeChats = GetAllActiveChats();
+            var queryResult =
+                from chat in activeChats
+                where
+                (chat.ChatClient.ChatterId == a && chat.ChatSupporter.ChatterId == b) ||
+                (chat.ChatClient.ChatterId == b && chat.ChatSupporter.ChatterId == a)
+                select chat;
+            return queryResult;
         }
 
         public void SendMessage(string content, int senderId, int receiverId)
         {
-            //TODO Get chat id
+            var activeChat = GetActiveChatByChatterIds(senderId, receiverId);
+            int chatId;
+            if (activeChat.Any())
+            {
+                chatId = activeChat.First().Id;
+            }
+            else
+            {
+                //TODO Custom exception here
+                return;
+            }
+
             var dbMessage = new message
             {
+                ChatId = chatId,
                 Message1 = content,
                 SenderId = senderId,
-                ReceiverId = receiverId
+                ReceiverId = receiverId,
+                Read = false,
+                TimeSend = DateTime.UtcNow
             };
-            db.messages.AddOrUpdate(dbMessage);
+            db.messages.Add(dbMessage);
             db.SaveChanges();
         }
 

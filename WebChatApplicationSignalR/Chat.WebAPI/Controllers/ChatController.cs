@@ -48,6 +48,12 @@ namespace WebChat.WebAPI.Controllers {
         [Route("SendMessage/{content}/{chatId}/{senderId}/{receiverId}"), HttpGet]
         public void SendMessage(string content, int chatId, int senderId, int receiverId)
         {
+            _chatServerService.SendMessage(content, chatId, senderId, receiverId);
+        }
+
+        [Route("SendMessage/{content}/{senderId}/{receiverId}"), HttpGet]
+        public void SendMessage(string content, int senderId, int receiverId)
+        {
             _chatServerService.SendMessage(content, senderId, receiverId);
         }
     }

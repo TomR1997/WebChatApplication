@@ -300,3 +300,8 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
+WebChatApplicationSignalR/WebChatApplicationSignalR/obj/Debug/WebChatApplicationSignalR.dll
+*.pdb
+WebChatApplicationSignalR/WebChatApplicationSignalR/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.pdb
+WebChatApplicationSignalR/WebChatApplicationSignalR/bin/WebChatApplicationSignalR.dll

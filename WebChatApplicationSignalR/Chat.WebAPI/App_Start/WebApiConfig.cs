@@ -6,10 +6,8 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
-namespace WebChat.WebAPI
-{
-    public static class WebApiConfig
-    {
+namespace WebChat.WebAPI {
+    public static class WebApiConfig {
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
@@ -25,6 +23,8 @@ namespace WebChat.WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.MapHttpAttributeRoutes();
         }
     }
 }

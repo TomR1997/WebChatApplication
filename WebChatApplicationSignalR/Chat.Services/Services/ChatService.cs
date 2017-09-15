@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
@@ -54,13 +55,12 @@ namespace WebChat.Service.Services {
         public IEnumerable<Chat> GetChatsByChatterId(int chatterId)
         {
 
-            //var chats = GetAllChats();
-            //var queryResult =
-            //    from chat in chats
-            //    where chat.ChatSupporterId == chatterId || chat.ChatClientId == chatterId
-            //    select chat;
-            //return queryResult;
-            throw new NotImplementedException();
+            var chats = GetAllChats();
+            var queryResult =
+                from chat in chats
+                where chat.ChatSupporter.ChatterId == chatterId || chat.ChatClient.ChatterId == chatterId
+                select chat;
+            return queryResult;
         }
 
         private Message DbMessageToMessage(message dbMessage)
@@ -88,12 +88,6 @@ namespace WebChat.Service.Services {
 
         public IEnumerable<Message> GetMessagesByChatId(int chatId)
         {
-            //var messages = GetAllMessages();
-            //var queryResult =
-            //    from message in messages
-            //    where message.ChatId == chatId
-            //    select message;
-            //return queryResult;
             var messages = GetAllMessages();
             var queryResult =
                 from message in messages
@@ -102,15 +96,14 @@ namespace WebChat.Service.Services {
             return queryResult;
         }
 
-        private IEnumerable<chat> GetActiveChats()
+        private IEnumerable<Chat> GetActiveChats()
         {
-            //var chats = GetAllChats();
-            //var openChats =
-            //    from chat in chats
-            //    where string.Equals(chat.Status, Status.Active.ToString(), StringComparison.CurrentCultureIgnoreCase)
-            //    select chat;
-            //return openChats;
-            throw new NotImplementedException();
+            var chats = GetAllChats();
+            var openChats =
+                from chat in chats
+                where chat.Status == Status.Active
+                select chat;
+            return openChats;
         }
 
         public void CreateChats(int chatClientId, int chatSupporterId)
@@ -134,36 +127,41 @@ namespace WebChat.Service.Services {
             }
         }
 
-        private chat GetChatByChatId(int chatId)
+        private Chat GetChatByChatId(int chatId)
         {
-            //var chats = GetAllChats();
-            //var queryResult =
-            //    from chat in chats
-            //    where chat.ChatId == chatId
-            //    select chat;
-            //var result = queryResult.FirstOrDefault();
-            //return result;
-            throw new NotImplementedException();
+            var chats = GetAllChats();
+            var queryResult =
+                from chat in chats
+                where chat.Id == chatId
+                select chat;
+            var result = queryResult.FirstOrDefault();
+            return result;
         }
 
         public void CloseChat(int chatId)
         {
             var chat = GetChatByChatId(chatId);
-            chat.Status = Status.Closed.ToString().ToUpper();
-            db.chats.Attach(chat);
+            var dbChat = new chat
+            {
+                ChatClientId = chat.ChatClient.ChatterId,
+                ChatId = chat.Id,
+                ChatSupporterId = chat.ChatSupporter.ChatterId,
+                Status = Status.Closed.ToString().ToUpper()
+            };
+            db.chats.AddOrUpdate(dbChat);
             db.SaveChanges();
         }
 
         public void SendMessage(string content, int chatId, int senderId, int receiverId)
         {
-            var message = new message
+            var dbMessage = new message
             {
                 Message1 = content,
                 SenderId = senderId,
                 ReceiverId = receiverId,
                 ChatId = chatId
             };
-            db.messages.Attach(message);
+            db.messages.AddOrUpdate(dbMessage);
             db.SaveChanges();
         }
     }

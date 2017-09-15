@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Web.Hosting;
 using WebChat.Data;
 using WebChat.Domain.Models;
 
@@ -16,8 +17,15 @@ namespace WebChat.Service.Services {
         IEnumerable<Message> GetAllMessages();
         IEnumerable<Message> GetMessagesByChatId(int chatId);
 
-        bool CreateChat(int chatClientId, int chatSupporterId);
+        void CreateChat(int chatClientId, int chatSupporterId);
         void CloseChat(int chatId);
-        void SendMessage(string content, int chatId, int chatClientId, int chatSupporterId);
+        //DEZE IS NOG BROKEN
+        void SendMessage(string content, int senderId, int receiverId);
+        void SendMessage(string content, int chatId, int senderId, int receiverId);
+
+        void MarkAsRead(int chatId, int receiverId);
+
+        //virtual GetUserData(UserData userData);
+
     }
 }

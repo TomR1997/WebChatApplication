@@ -152,17 +152,43 @@ namespace WebChat.Service.Services {
             db.SaveChanges();
         }
 
+
+        void IChatService.CreateChat(int chatClientId, int chatSupporterId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SendMessage(string content, int chatId, int senderId, int receiverId)
         {
             var dbMessage = new message
             {
+                ChatId = chatId,
                 Message1 = content,
                 SenderId = senderId,
                 ReceiverId = receiverId,
-                ChatId = chatId
+                Read = false,
+                TimeSend = DateTime.UtcNow
             };
             db.messages.AddOrUpdate(dbMessage);
             db.SaveChanges();
+        }
+
+        public void SendMessage(string content, int senderId, int receiverId)
+        {
+            //TODO Get chat id
+            var dbMessage = new message
+            {
+                Message1 = content,
+                SenderId = senderId,
+                ReceiverId = receiverId
+            };
+            db.messages.AddOrUpdate(dbMessage);
+            db.SaveChanges();
+        }
+
+        public void MarkAsRead(int chatId, int receiverId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

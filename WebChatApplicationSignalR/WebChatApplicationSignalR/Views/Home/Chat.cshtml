@@ -13,7 +13,7 @@
     <br />
     <label style="color: blue;font-style:oblique;font-size:medium" id="label2">Group Chat Conversations History</label>
     <div class="container chatArea">
-        <input type ="hidden" id="displayname" />
+        <input type="hidden" id="displayname" />
         <ul id="discussion"></ul>
     </div>
 </div>
@@ -42,14 +42,5 @@
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
-
-        var chatHub = $.connection.chatHub;
-        chatHub.client.sayHello = function () {
-            console.log("Hello from API");
-        }
-        chatHub.client.sayHello();
-        $.connection.hub.start().done(function () {
-            console.log("Started");
-        });
     </script>
 }   

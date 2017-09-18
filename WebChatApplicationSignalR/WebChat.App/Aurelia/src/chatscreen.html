@@ -1,5 +1,18 @@
 ﻿<template>
-<p>
-    aurelia
-</p>
-</template>
+    <fieldset>
+        <legend style="color:orangered">Chat application with SignalR</legend>
+    </fieldset>
+    <div class="form-group col-xl-12">
+        <label style="color: blue; font-style: oblique;font-size: medium" id="label1">Write Your Message Here</label><br />
+        <textarea class="form-control" rows="4" cols="40" id="message" placeholder="Enter message..."></textarea>
+        <br />
+        <input type="button" class="btn btn-primary" id="sendmessage" value="Send" />
+        <br />
+        <br />
+        <label style="color: blue;font-style:oblique;font-size:medium" id="label2">Group Chat Conversations History</label>
+        <div class="container chatArea">
+            <input type="hidden" id="displayname" />
+            <ul id="discussion"></ul>
+        </div>
+    </div>
+</template> 

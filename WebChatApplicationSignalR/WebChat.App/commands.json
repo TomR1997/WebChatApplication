@@ -6,4 +6,5 @@
       "arguments": "/c Aurelia\\cdbuild.bat"
     }
   }
+, "-vs-binding":{"BeforeBuild":["cdbuild"]}
 }

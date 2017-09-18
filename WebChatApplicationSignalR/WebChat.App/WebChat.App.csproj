@@ -157,6 +157,7 @@
     <Content Include="Aurelia\karma.conf.js" />
     <Content Include="Aurelia\protractor.conf.js" />
     <Content Include="Aurelia\src\app.html" />
+    <Content Include="Aurelia\src\chatscreen.html" />
     <Content Include="Aurelia\src\child-router.html" />
     <Content Include="Aurelia\src\nav-bar.html" />
     <Content Include="Aurelia\src\users.html" />
@@ -206,6 +207,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Aurelia\src\app.ts" />
     <TypeScriptCompile Include="Aurelia\src\blur-image.ts" />
+    <TypeScriptCompile Include="Aurelia\src\chatscreen.ts" />
     <TypeScriptCompile Include="Aurelia\src\child-router.ts" />
     <TypeScriptCompile Include="Aurelia\src\main.ts" />
     <TypeScriptCompile Include="Aurelia\src\users.ts" />

@@ -1,0 +1,2 @@
+cd Aurelia
+gulp build

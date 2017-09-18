@@ -1,0 +1,9 @@
+{
+  "commands": {
+    "cdbuild": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c Aurelia\\cdbuild.bat"
+    }
+  }
+}

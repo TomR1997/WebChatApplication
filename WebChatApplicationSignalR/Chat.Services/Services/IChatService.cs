@@ -7,8 +7,6 @@ using System.Web.Hosting;
 using WebChat.Data;
 using WebChat.Domain.Models;
 
-//TODO Replace this with domain version later
-
 namespace WebChat.Service.Services {
     public interface IChatService {
         IEnumerable<Chat> GetAllChats();

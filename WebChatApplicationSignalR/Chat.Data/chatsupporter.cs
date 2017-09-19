@@ -7,21 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebChat.Data {
+namespace WebChat.Data
+{
     using System;
     using System.Collections.Generic;
-
-    public partial class chatsupporter {
+    
+    public partial class chatsupporter
+    {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public chatsupporter()
         {
             this.chats = new HashSet<chat>();
         }
-
+    
         public int ChatterId { get; set; }
         public string Department { get; set; }
         public string DefaultMessage { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chat> chats { get; set; }
         public virtual chatter chatter { get; set; }

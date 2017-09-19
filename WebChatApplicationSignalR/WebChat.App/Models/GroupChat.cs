@@ -9,7 +9,7 @@ namespace WebChat.App.Models
     {
         private IHubConnectionContext<dynamic> Clients { get; set; }
 
-        private readonly GroupChat groupChat = new GroupChat(GlobalHost.ConnectionManager.GetHubContext<GroupChatHub>().Clients);
+        private readonly static GroupChat groupChat = new GroupChat(GlobalHost.ConnectionManager.GetHubContext<GroupChatHub>().Clients);
 
         private GroupChat(IHubConnectionContext<dynamic> clients)
         {

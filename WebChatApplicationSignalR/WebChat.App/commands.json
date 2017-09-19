@@ -5,6 +5,6 @@
       "workingDirectory": ".",
       "arguments": "/c Aurelia\\cdbuild.bat"
     }
-  }
-, "-vs-binding":{"BeforeBuild":["cdbuild"]}
+  },
+  "-vs-binding": { "BeforeBuild": [ "cdbuild" ] }
 }

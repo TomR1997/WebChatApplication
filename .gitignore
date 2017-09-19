@@ -305,3 +305,4 @@ WebChatApplicationSignalR/WebChatApplicationSignalR/obj/Debug/WebChatApplication
 WebChatApplicationSignalR/WebChatApplicationSignalR/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.pdb
 WebChatApplicationSignalR/WebChatApplicationSignalR/bin/WebChatApplicationSignalR.dll
+WebChatApplicationSignalR/.vs/config/applicationhost.config

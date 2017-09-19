@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebChat.App.Hubs
 {
-    public class GroupChatGroup : Hub
+    public class GroupChatHub : Hub
     {
         private Dictionary<string, int> onlineUsers = new Dictionary<string, int>();
         private string username;

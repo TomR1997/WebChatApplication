@@ -1,15 +1,18 @@
 ﻿<template>
-
+    <script src="~/jquery.min.js"></script>
+    <script src="~/jquery.signalR.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/src/chatscreen.js"></script>
     <h2>
         Group chat system(<span id="count">1</span> people online)
     </h2>
 
 
     <div style="overflow:auto;height:300px">
-        <ul id="msg"></ul>
+        <ul id="msg" value.bind ="msg"></ul>
     </div>
 
-    <select id="users" class="form-control" style="max-width:150px;">
+    <select id="users" value.bind="users" class="form-control" style="max-width:150px;">
         <option value="0">Everyone</option>
     </select>
 

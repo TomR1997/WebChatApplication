@@ -251,6 +251,9 @@
     <TypeScriptCompile Include="Aurelia\test\unit\child-router.spec.ts" />
     <TypeScriptCompile Include="Aurelia\test\unit\setup.ts" />
     <TypeScriptCompile Include="Aurelia\test\unit\users.spec.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\signalr\signalr-1.0.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

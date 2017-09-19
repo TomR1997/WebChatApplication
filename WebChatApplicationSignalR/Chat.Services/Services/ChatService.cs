@@ -16,7 +16,7 @@ using WebChat.Domain.Models;
 
 namespace WebChat.Service.Services {
     public class ChatService : IChatService {
-        private ChatDbEntities db = new ChatDbEntities();
+        private ChatEntities db = new ChatEntities();
 
         private Status ParseStatus(string status)
         {
@@ -251,7 +251,7 @@ namespace WebChat.Service.Services {
         {
             foreach (var dbMessage in db.messages)
             {
-                db = new ChatDbEntities();
+                db = new ChatEntities();
                 if (dbMessage.ChatId == chatId && receiverId == dbMessage.ReceiverId && !dbMessage.Read)
                 {
                     dbMessage.Read = true;

@@ -7,16 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebChat.Data {
+namespace WebChat.Data
+{
     using System;
     using System.Collections.Generic;
-
-    public partial class chat {
+    
+    public partial class chat
+    {
         public int ChatId { get; set; }
         public int ChatClientId { get; set; }
         public int ChatSupporterId { get; set; }
         public string Status { get; set; }
-
+    
         public virtual chatclient chatclient { get; set; }
         public virtual chatsupporter chatsupporter { get; set; }
     }

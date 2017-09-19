@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ChatDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ChatDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="chat">
           <Key>
             <PropertyRef Name="ChatId" />
@@ -127,7 +127,8 @@
             <End Role="chatsupporter" EntitySet="chatsupporter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ChatDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -238,7 +239,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ChatDbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ChatEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="chats" EntityType="Self.chat" />
           <EntitySet Name="chatclients" EntityType="Self.chatclient" />
           <EntitySet Name="chatsupporters" EntityType="Self.chatsupporter" />
@@ -266,7 +267,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ChatDbModelStoreContainer" CdmEntityContainer="ChatDbEntities">
+        <EntityContainerMapping StorageEntityContainer="ChatDbModelStoreContainer" CdmEntityContainer="ChatEntities">
           <EntitySetMapping Name="chats">
             <EntityTypeMapping TypeName="ChatDbModel.chat">
               <MappingFragment StoreEntitySet="chat">

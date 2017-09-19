@@ -20,7 +20,7 @@ namespace WebChat.Service.Services {
 
         private Status ParseStatus(string status)
         {
-            Status parsedStatus;
+            Status parsedStatus = Status.Unknown;
             if (string.Equals(status, Status.Active.ToString(), StringComparison.CurrentCultureIgnoreCase))
             {
                 parsedStatus = Status.Active;
@@ -32,8 +32,7 @@ namespace WebChat.Service.Services {
                 return parsedStatus;
             }
             else
-                //TODO Make this a custom exception
-                throw new Exception("Could not parse status!");
+                throw new InvalidCastException("Could not parse" + status.GetType() + " " + status + "to " + parsedStatus.GetType() + " " + parsedStatus);
         }
 
         private Chat DbChatToChat(chat dbChat)
@@ -124,12 +123,37 @@ namespace WebChat.Service.Services {
                 db.chats.Add(chat);
                 db.SaveChanges();
                 //TODO Send default message of support if it exist
+
+                var chatSupporter = GetChatSupporterByChatterId(chatSupporterId);
+                SendMessage(chatSupporter.DefaultMessage, chatSupporterId, chatClientId);
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        private ChatSupporter GetChatSupporterByChatterId(int chatterId)
+        {
+            var dbChatSupporters = db.chatsupporters;
+            var queryResult =
+                from dbChatSupporter in dbChatSupporters
+                where dbChatSupporter.ChatterId == chatterId
+                select dbChatSupporter;
+            var result = queryResult.First();
+            return new ChatSupporter(result.ChatterId, GetScreennameByChatterId(result.ChatterId), result.Department, result.DefaultMessage);
+        }
+
+        private string GetScreennameByChatterId(int chatterId)
+        {
+            var dbChatters = db.chatters;
+            var queryResult =
+                from dbChatter in dbChatters
+                where dbChatter.ChatterId == chatterId
+                select dbChatter;
+            var result = queryResult.First();
+            return result.Screenname;
         }
 
         private Chat GetChatByChatId(int chatId)
@@ -157,11 +181,6 @@ namespace WebChat.Service.Services {
             db.SaveChanges();
         }
 
-
-        void IChatService.CreateChat(int chatClientId, int chatSupporterId)
-        {
-            throw new NotImplementedException();
-        }
 
         public void SendMessage(string content, int chatId, int senderId, int receiverId)
         {
@@ -210,7 +229,6 @@ namespace WebChat.Service.Services {
             }
             else
             {
-                //TODO Custom exception here
                 return;
             }
 
@@ -238,7 +256,7 @@ namespace WebChat.Service.Services {
                 {
                     dbMessage.Read = true;
                     db.Entry(dbMessage).State = EntityState.Modified;
-                    db.messages.Attach(dbMessage);
+                    //db.messages.Attach(dbMessage);
 
 
                     var saveFailed = false;
@@ -249,9 +267,8 @@ namespace WebChat.Service.Services {
                         {
                             db.SaveChanges();
                         }
-                        catch (DbUpdateConcurrencyException e)
+                        catch (DbUpdateConcurrencyException)
                         {
-                            break;
                             saveFailed = true;
                         }
                     } while (saveFailed);

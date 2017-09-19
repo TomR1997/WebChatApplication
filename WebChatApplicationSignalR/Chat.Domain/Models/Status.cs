@@ -6,6 +6,6 @@ using System.Web;
 
 namespace WebChat.Domain.Models {
     public enum Status {
-        Active, Closed
+        Active, Closed, Unknown
     }
 }

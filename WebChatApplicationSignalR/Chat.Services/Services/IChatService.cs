@@ -17,7 +17,7 @@ namespace WebChat.Service.Services {
         IEnumerable<Message> GetAllMessages();
         IEnumerable<Message> GetMessagesByChatId(int chatId);
 
-        void CreateChat(int chatClientId, int chatSupporterId);
+        bool CreateChat(int chatClientId, int chatSupporterId);
         void CloseChat(int chatId);
         void SendMessage(string content, int senderId, int receiverId);
         void SendMessage(string content, int chatId, int senderId, int receiverId);

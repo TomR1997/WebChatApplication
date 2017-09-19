@@ -34,9 +34,9 @@ namespace WebChat.WebAPI.Controllers {
         }
 
         [Route("CreateChat/{chatClientId}/{chatSupporterId}"), HttpGet]
-        public void CreateChat(int chatClientId, int chatSupporterId)
+        public bool CreateChat(int chatClientId, int chatSupporterId)
         {
-            _chatServerService.CreateChat(chatClientId, chatSupporterId);
+            return _chatServerService.CreateChat(chatClientId, chatSupporterId);
         }
 
         [Route("CloseChatByChatId/{id}"), HttpGet]

@@ -11,6 +11,7 @@ namespace WebChat.Domain.Models {
         #region Properties, fields
         [DataMember]
         private string department;
+        private string defaultMessage;
 
         public string Department
         {
@@ -18,10 +19,23 @@ namespace WebChat.Domain.Models {
             set { department = value; }
         }
 
+        public string DefaultMessage
+        {
+            get { return defaultMessage; }
+            set { defaultMessage = value; }
+        }
+
         #endregion
         public ChatSupporter(int chatterId, string screenName, string department) : base(chatterId, screenName)
         {
             this.department = department;
+            this.defaultMessage = "";
+        }
+
+        public ChatSupporter(int chatterId, string screenName, string department, string defaultMessage) : base(chatterId, screenName)
+        {
+            this.department = department;
+            this.defaultMessage = defaultMessage;
         }
     }
 }

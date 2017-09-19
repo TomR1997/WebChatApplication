@@ -122,7 +122,6 @@ namespace WebChat.Service.Services {
                 };
                 db.chats.Add(chat);
                 db.SaveChanges();
-                //TODO Send default message of support if it exist
 
                 var chatSupporter = GetChatSupporterByChatterId(chatSupporterId);
                 SendMessage(chatSupporter.DefaultMessage, chatSupporterId, chatClientId);

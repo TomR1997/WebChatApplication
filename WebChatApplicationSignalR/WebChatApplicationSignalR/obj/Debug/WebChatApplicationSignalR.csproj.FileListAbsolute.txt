@@ -113,6 +113,10 @@ C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebC
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.Deployment.dll
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.dll
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.Razor.dll
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.abstractions.dll
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.assert.dll
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.core.dll
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.execution.desktop.dll
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\EntityFramework.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\EntityFramework.SqlServer.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\Microsoft.AI.DependencyCollector.xml
@@ -131,6 +135,10 @@ C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebC
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Net.Http.Formatting.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Http.WebHost.xml
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.abstractions.xml
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.assert.xml
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.core.xml
+C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\xunit.execution.desktop.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Razor.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.xml
 C:\Users\Tomt\Documents\GitHub\WebChatApplication\WebChatApplicationSignalR\WebChatApplicationSignalR\bin\System.Web.Webpages.Deployment.xml

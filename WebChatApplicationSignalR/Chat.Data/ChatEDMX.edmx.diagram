@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1a24dfc87bab4658928e87f7f11d98dd" Name="Diagram1">
+        <EntityTypeShape EntityType="ChatDbModel.chat" Width="1.5" PointX="6.875" PointY="1.625" />
+        <EntityTypeShape EntityType="ChatDbModel.chatclient" Width="1.5" PointX="4.625" PointY="0.5" />
+        <EntityTypeShape EntityType="ChatDbModel.chatsupporter" Width="1.5" PointX="4.625" PointY="3" />
+        <EntityTypeShape EntityType="ChatDbModel.chatter" Width="1.5" PointX="2.375" PointY="1.5" />
+        <EntityTypeShape EntityType="ChatDbModel.message" Width="1.5" PointX="9" PointY="1.625" />
+        <AssociationConnector Association="ChatDbModel.FK__chat__ChatClient__13F1F5EB" />
+        <AssociationConnector Association="ChatDbModel.FK__chat__ChatSuppor__14E61A24" />
+        <AssociationConnector Association="ChatDbModel.FK__chatclien__Chatt__0E391C95" />
+        <AssociationConnector Association="ChatDbModel.FK__chatsuppo__Chatt__11158940" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

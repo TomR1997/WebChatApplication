@@ -11,7 +11,7 @@
             <PropertyRef Name="ChatClientId" />
             <PropertyRef Name="ChatSupporterId" />
           </Key>
-          <Property Name="ChatId" Type="int" Nullable="false" />
+          <Property Name="ChatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ChatClientId" Type="int" Nullable="false" />
           <Property Name="ChatSupporterId" Type="int" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="45" Nullable="false" />
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="ChatterId" />
           </Key>
-          <Property Name="ChatterId" Type="int" Nullable="false" />
+          <Property Name="ChatterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="varchar" MaxLength="45" />
           <Property Name="LastName" Type="varchar" MaxLength="45" />
           <Property Name="Email" Type="varchar" MaxLength="45" />
@@ -131,18 +131,41 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ChatDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ChatEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chats" EntityType="ChatDbModel.chat" />
+          <EntitySet Name="chatclients" EntityType="ChatDbModel.chatclient" />
+          <EntitySet Name="chatsupporters" EntityType="ChatDbModel.chatsupporter" />
+          <EntitySet Name="chatters" EntityType="ChatDbModel.chatter" />
+          <EntitySet Name="messages" EntityType="ChatDbModel.message" />
+          <AssociationSet Name="FK__chat__ChatClient__13F1F5EB" Association="ChatDbModel.FK__chat__ChatClient__13F1F5EB">
+            <End Role="chatclient" EntitySet="chatclients" />
+            <End Role="chat" EntitySet="chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__ChatSuppor__14E61A24" Association="ChatDbModel.FK__chat__ChatSuppor__14E61A24">
+            <End Role="chatsupporter" EntitySet="chatsupporters" />
+            <End Role="chat" EntitySet="chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chatclien__Chatt__0E391C95" Association="ChatDbModel.FK__chatclien__Chatt__0E391C95">
+            <End Role="chatter" EntitySet="chatters" />
+            <End Role="chatclient" EntitySet="chatclients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chatsuppo__Chatt__11158940" Association="ChatDbModel.FK__chatsuppo__Chatt__11158940">
+            <End Role="chatter" EntitySet="chatters" />
+            <End Role="chatsupporter" EntitySet="chatsupporters" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="chat">
           <Key>
             <PropertyRef Name="ChatId" />
             <PropertyRef Name="ChatClientId" />
             <PropertyRef Name="ChatSupporterId" />
           </Key>
-          <Property Name="ChatId" Type="Int32" Nullable="false" />
+          <Property Name="ChatId" Type="Int32" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ChatClientId" Type="Int32" Nullable="false" />
           <Property Name="ChatSupporterId" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="chatclient" Relationship="Self.FK__chat__ChatClient__13F1F5EB" FromRole="chat" ToRole="chatclient" />
-          <NavigationProperty Name="chatsupporter" Relationship="Self.FK__chat__ChatSuppor__14E61A24" FromRole="chat" ToRole="chatsupporter" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="chatclient" Relationship="ChatDbModel.FK__chat__ChatClient__13F1F5EB" FromRole="chat" ToRole="chatclient" />
+          <NavigationProperty Name="chatsupporter" Relationship="ChatDbModel.FK__chat__ChatSuppor__14E61A24" FromRole="chat" ToRole="chatsupporter" />
         </EntityType>
         <EntityType Name="chatclient">
           <Key>
@@ -150,8 +173,8 @@
           </Key>
           <Property Name="ChatterId" Type="Int32" Nullable="false" />
           <Property Name="Branch" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="chats" Relationship="Self.FK__chat__ChatClient__13F1F5EB" FromRole="chatclient" ToRole="chat" />
-          <NavigationProperty Name="chatter" Relationship="Self.FK__chatclien__Chatt__0E391C95" FromRole="chatclient" ToRole="chatter" />
+          <NavigationProperty Name="chats" Relationship="ChatDbModel.FK__chat__ChatClient__13F1F5EB" FromRole="chatclient" ToRole="chat" />
+          <NavigationProperty Name="chatter" Relationship="ChatDbModel.FK__chatclien__Chatt__0E391C95" FromRole="chatclient" ToRole="chatter" />
         </EntityType>
         <EntityType Name="chatsupporter">
           <Key>
@@ -160,21 +183,21 @@
           <Property Name="ChatterId" Type="Int32" Nullable="false" />
           <Property Name="Department" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="DefaultMessage" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="chats" Relationship="Self.FK__chat__ChatSuppor__14E61A24" FromRole="chatsupporter" ToRole="chat" />
-          <NavigationProperty Name="chatter" Relationship="Self.FK__chatsuppo__Chatt__11158940" FromRole="chatsupporter" ToRole="chatter" />
+          <NavigationProperty Name="chats" Relationship="ChatDbModel.FK__chat__ChatSuppor__14E61A24" FromRole="chatsupporter" ToRole="chat" />
+          <NavigationProperty Name="chatter" Relationship="ChatDbModel.FK__chatsuppo__Chatt__11158940" FromRole="chatsupporter" ToRole="chatter" />
         </EntityType>
         <EntityType Name="chatter">
           <Key>
             <PropertyRef Name="ChatterId" />
           </Key>
-          <Property Name="ChatterId" Type="Int32" Nullable="false" />
+          <Property Name="ChatterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Screenname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="chatclient" Relationship="Self.FK__chatclien__Chatt__0E391C95" FromRole="chatter" ToRole="chatclient" />
-          <NavigationProperty Name="chatsupporter" Relationship="Self.FK__chatsuppo__Chatt__11158940" FromRole="chatter" ToRole="chatsupporter" />
+          <NavigationProperty Name="chatclient" Relationship="ChatDbModel.FK__chatclien__Chatt__0E391C95" FromRole="chatter" ToRole="chatclient" />
+          <NavigationProperty Name="chatsupporter" Relationship="ChatDbModel.FK__chatsuppo__Chatt__11158940" FromRole="chatter" ToRole="chatsupporter" />
         </EntityType>
         <EntityType Name="message">
           <Key>
@@ -191,8 +214,8 @@
           <Property Name="Read" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__chat__ChatClient__13F1F5EB">
-          <End Role="chatclient" Type="Self.chatclient" Multiplicity="1" />
-          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <End Type="ChatDbModel.chatclient" Role="chatclient" Multiplicity="1" />
+          <End Type="ChatDbModel.chat" Role="chat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="chatclient">
               <PropertyRef Name="ChatterId" />
@@ -203,8 +226,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__chat__ChatSuppor__14E61A24">
-          <End Role="chatsupporter" Type="Self.chatsupporter" Multiplicity="1" />
-          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <End Type="ChatDbModel.chatsupporter" Role="chatsupporter" Multiplicity="1" />
+          <End Type="ChatDbModel.chat" Role="chat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="chatsupporter">
               <PropertyRef Name="ChatterId" />
@@ -215,8 +238,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__chatclien__Chatt__0E391C95">
-          <End Role="chatter" Type="Self.chatter" Multiplicity="1" />
-          <End Role="chatclient" Type="Self.chatclient" Multiplicity="0..1" />
+          <End Type="ChatDbModel.chatter" Role="chatter" Multiplicity="1" />
+          <End Type="ChatDbModel.chatclient" Role="chatclient" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="chatter">
               <PropertyRef Name="ChatterId" />
@@ -227,8 +250,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__chatsuppo__Chatt__11158940">
-          <End Role="chatter" Type="Self.chatter" Multiplicity="1" />
-          <End Role="chatsupporter" Type="Self.chatsupporter" Multiplicity="0..1" />
+          <End Type="ChatDbModel.chatter" Role="chatter" Multiplicity="1" />
+          <End Type="ChatDbModel.chatsupporter" Role="chatsupporter" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="chatter">
               <PropertyRef Name="ChatterId" />
@@ -238,83 +261,60 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ChatDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="chats" EntityType="Self.chat" />
-          <EntitySet Name="chatclients" EntityType="Self.chatclient" />
-          <EntitySet Name="chatsupporters" EntityType="Self.chatsupporter" />
-          <EntitySet Name="chatters" EntityType="Self.chatter" />
-          <EntitySet Name="messages" EntityType="Self.message" />
-          <AssociationSet Name="FK__chat__ChatClient__13F1F5EB" Association="Self.FK__chat__ChatClient__13F1F5EB">
-            <End Role="chatclient" EntitySet="chatclients" />
-            <End Role="chat" EntitySet="chats" />
-          </AssociationSet>
-          <AssociationSet Name="FK__chat__ChatSuppor__14E61A24" Association="Self.FK__chat__ChatSuppor__14E61A24">
-            <End Role="chatsupporter" EntitySet="chatsupporters" />
-            <End Role="chat" EntitySet="chats" />
-          </AssociationSet>
-          <AssociationSet Name="FK__chatclien__Chatt__0E391C95" Association="Self.FK__chatclien__Chatt__0E391C95">
-            <End Role="chatter" EntitySet="chatters" />
-            <End Role="chatclient" EntitySet="chatclients" />
-          </AssociationSet>
-          <AssociationSet Name="FK__chatsuppo__Chatt__11158940" Association="Self.FK__chatsuppo__Chatt__11158940">
-            <End Role="chatter" EntitySet="chatters" />
-            <End Role="chatsupporter" EntitySet="chatsupporters" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ChatDbModelStoreContainer" CdmEntityContainer="ChatDbEntities">
+        <EntityContainerMapping StorageEntityContainer="ChatDbModelStoreContainer" CdmEntityContainer="ChatEntities">
           <EntitySetMapping Name="chats">
             <EntityTypeMapping TypeName="ChatDbModel.chat">
               <MappingFragment StoreEntitySet="chat">
-                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
-                <ScalarProperty Name="ChatClientId" ColumnName="ChatClientId" />
-                <ScalarProperty Name="ChatSupporterId" ColumnName="ChatSupporterId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ChatSupporterId" ColumnName="ChatSupporterId" />
+                <ScalarProperty Name="ChatClientId" ColumnName="ChatClientId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="chatclients">
             <EntityTypeMapping TypeName="ChatDbModel.chatclient">
               <MappingFragment StoreEntitySet="chatclient">
-                <ScalarProperty Name="ChatterId" ColumnName="ChatterId" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="ChatterId" ColumnName="ChatterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="chatsupporters">
             <EntityTypeMapping TypeName="ChatDbModel.chatsupporter">
               <MappingFragment StoreEntitySet="chatsupporter">
-                <ScalarProperty Name="ChatterId" ColumnName="ChatterId" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="DefaultMessage" ColumnName="DefaultMessage" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ChatterId" ColumnName="ChatterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="chatters">
             <EntityTypeMapping TypeName="ChatDbModel.chatter">
               <MappingFragment StoreEntitySet="chatter">
-                <ScalarProperty Name="ChatterId" ColumnName="ChatterId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Screenname" ColumnName="Screenname" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ChatterId" ColumnName="ChatterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="messages">
             <EntityTypeMapping TypeName="ChatDbModel.message">
               <MappingFragment StoreEntitySet="message">
-                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
-                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
-                <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
-                <ScalarProperty Name="TimeSend" ColumnName="TimeSend" />
-                <ScalarProperty Name="Message1" ColumnName="Message" />
                 <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Message1" ColumnName="Message" />
+                <ScalarProperty Name="TimeSend" ColumnName="TimeSend" />
+                <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

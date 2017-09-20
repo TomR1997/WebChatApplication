@@ -13,10 +13,10 @@ namespace WebChat.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ChatDbEntities : DbContext
+    public partial class ChatEntities : DbContext
     {
-        public ChatDbEntities()
-            : base("name=ChatDbEntities")
+        public ChatEntities()
+            : base("name=ChatEntities")
         {
         }
     

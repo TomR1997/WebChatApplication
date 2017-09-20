@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace WebChat.App.Hubs
 {
+    [HubName("groupChatHub")]
     public class GroupChatHub : Hub
     {
         private Dictionary<string, int> onlineUsers = new Dictionary<string, int>();

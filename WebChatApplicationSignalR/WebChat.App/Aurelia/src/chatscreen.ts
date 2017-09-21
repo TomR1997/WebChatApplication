@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export class ChatScreen {
 
     chatMessage() {
@@ -34,5 +35,9 @@ export class ChatScreen {
             ticker.server.sendMessage($('#users').val(), msg);
         });
         //});
+=======
+﻿export class ChatScreen {
+    constructor() {
+>>>>>>> parent of fe5b4e9... typescript start
     }
 }

@@ -1,22 +1,19 @@
 ﻿<template>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script src="~/Aurelia/src/chatscreen.js"></script>
+
     <h2>
         Group chat system(<span id="count">1</span> people online)
     </h2>
 
 
     <div style="overflow:auto;height:300px">
-        <ul id="msg" value.bind ="msg"></ul>
+        <ul id="msg"></ul>
     </div>
 
-    <select id="users" value.bind="users" class="form-control" style="max-width:150px;">
+    <select id="users" class="form-control" style="max-width:150px;">
         <option value="0">Everyone</option>
     </select>
 
     <input type="text" onkeydown='if (event.keyCode == 13) { $("#btn-send").click() }' class="form-control" id="txt-msg" placeholder="Content" style="max-width:400px;" />
     <br />
-    <button type="button" id="btn-send">Send</button>
+    <button type="button" click.delegate="sendMessage()" id="btn-send">Send</button>
 </template> 

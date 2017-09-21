@@ -16,7 +16,10 @@
     "removeComments": true,
     "rootDir": "src",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "filesGlob": [
     "./src/**/*.ts",

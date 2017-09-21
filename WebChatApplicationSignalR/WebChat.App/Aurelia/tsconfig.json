@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "lib": [ "es2015", "dom" ],
     "module": "amd",
-    "moduleResolution": "node",
+    "moduleResolution": "classic",
     "noImplicitAny": false,
     "outDir": "dist",
     "paths": {

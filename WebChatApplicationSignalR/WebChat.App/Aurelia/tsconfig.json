@@ -1,22 +1,23 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "sourceMap": true,
-    "target": "es5",
-    "module": "amd",
+    "baseUrl": "./",
     "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
+    "module": "amd",
     "moduleResolution": "node",
-    "lib": ["es2015", "dom"],
-    "baseUrl": "./",
+    "noImplicitAny": false,
+    "outDir": "dist",
     "paths": {
-      "src/*": ["src/*"]
-    }
+      "src/*": [ "src/*" ]
+    },
+    "removeComments": true,
+    "rootDir": "src",
+    "sourceMap": true,
+    "target": "es5",
+    "typeRoots": [ "/@types/" ]
   },
   "filesGlob": [
     "./src/**/*.ts",

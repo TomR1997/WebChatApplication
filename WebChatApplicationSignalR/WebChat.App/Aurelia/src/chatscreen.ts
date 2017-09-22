@@ -1,14 +1,30 @@
 ﻿export class ChatScreen {
-    //private connection: SignalR;
+    private connection: SignalR;
+    private proxy: SignalR.Hub.Proxy;
+    //private proxyConnection: SignalR;
 
     constructor() {
+        this.connection = $.connection;
+        //this.proxyConnection = $.hubConnection;
+        //this.proxy = this.proxyConnection.createHubProxy("groupChatHub");
+        this.proxy.on('messageReceived', (latestMsg) => this.onMessageReceived(latestMsg));
+        this.connection.hub.start();
     }
 
+    private onMessageReceived(latestMsg: string) {
+        console.log('New message received: ' + latestMsg);
+    }
+
+    broadcastMessage(msg: string) {
+        this.proxy.invoke('sendMessage', msg);
+    }
+
+
     sendMessage() {
-        var $: any;
+        //var $: any;
         //$(function () {
 
-            var ticker = $.connection.groupChatHub;
+        var ticker = $.connection.groupChatHub;
             $.connection.hub.start();
 
             $.extend(ticker.client, {

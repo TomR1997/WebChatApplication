@@ -5,7 +5,7 @@
 // TypeScript Version: 2.3
 
 
-/// <reference types="jquery" />
+// <reference types="jquery" />
 
 
 declare namespace SignalR {

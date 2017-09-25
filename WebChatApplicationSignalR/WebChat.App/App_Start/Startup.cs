@@ -11,7 +11,7 @@ namespace WebChat.App.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
-            app.MapSignalR("/signalr", new HubConfiguration());
+            app.MapSignalR(new HubConfiguration{ EnableJSONP = true });
         }
     }
 }

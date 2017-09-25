@@ -65,8 +65,9 @@ export class ChatScreen {
 
     createHub(hubName) {
         if (!this.connection) {
-            this.connection = $.hubConnection('{hubBaseUrl}');
+            //this.connection = $.hubConnection('{hubBaseUrl}');
             //this.connection = $.hubConnection();
+            this.connection = $.hubConnection("/signalr", { useDefaultPath: false });
             //The following can be used to pass certain data to the hub on connection such as user id.
             //this.connection.qs = { UserId: '{SomeUserId}', Token: '{SomeUserToken}' };
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(WebChat.WebAPI.Startup))]
+[assembly: OwinStartup("APIStartUp", typeof(WebChat.WebAPI.Startup))]
 
 namespace WebChat.WebAPI
 {

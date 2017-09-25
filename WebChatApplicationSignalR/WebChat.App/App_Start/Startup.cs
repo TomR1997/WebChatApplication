@@ -1,7 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Owin;
+using System;
 
-[assembly: OwinStartup(typeof(WebChat.App.App_Start.Startup))]
+[assembly: OwinStartup("ChatStartUp",typeof(WebChat.App.App_Start.Startup))]
 
 namespace WebChat.App.App_Start
 {
@@ -9,7 +11,7 @@ namespace WebChat.App.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
-            app.MapSignalR();
+            app.MapSignalR("/signalr", new HubConfiguration());
         }
     }
 }

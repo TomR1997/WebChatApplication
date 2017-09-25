@@ -32,6 +32,7 @@ System.config({
     "fetch": "github:github/fetch@1.0.0",
     "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.4",
+    "ms-signalr-client": "npm:ms-signalr-client@2.2.7",
     "text": "github:systemjs/plugin-text@0.0.8",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -196,6 +197,9 @@ System.config({
     },
     "npm:isarray@1.0.0": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:ms-signalr-client@2.2.7": {
+      "jquery": "npm:jquery@2.2.4"
     },
     "npm:process@0.11.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",

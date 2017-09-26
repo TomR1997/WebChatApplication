@@ -53,12 +53,10 @@ export class ChatScreen {
 export class ChatScreen {
     connection: any;
     proxy = {};
-    debug = false;
     running = false;
     //connection = null;
 
     constructor() {
-        this.debug = true;
         this.createHub("groupChatHub");        
         this.start();
     }
@@ -67,14 +65,20 @@ export class ChatScreen {
         if (!this.connection) {
             //this.connection = $.hubConnection('{hubBaseUrl}');
             //this.connection = $.hubConnection();
-            this.connection = $.hubConnection("/signalr", { useDefaultPath: false });
+            this.connection = $.hubConnection('http://localhost:51907/signalr', { useDefaultPath: false });
+            this.connection.logging = true;
+
             //The following can be used to pass certain data to the hub on connection such as user id.
             //this.connection.qs = { UserId: '{SomeUserId}', Token: '{SomeUserToken}' };
         }
         hubName = hubName.toLocaleLowerCase();
         if (!this.connection.proxies[hubName]) {
-            this.connection.createHubProxy(hubName);
+            var hubProxy = this.connection.createHubProxy(hubName);
+            /*hubProxy.on('sendMessage', function (data) {
+                alert(data);
+            });*/          
             this.connection.proxies[hubName].funcs = {};
+            hubProxy.on('sendMessage', message => console.log("testing..."));
         }
     }
 
@@ -95,14 +99,12 @@ export class ChatScreen {
 
     start() {
         if (!this.running) {
-            this.connection.start({ jsonp: true })
+            this.connection.start()
                 .done(function () {
-                    if (this.debug)
-                        console.debug('Now connected, connection Id=' + this.connection.id);
+                    console.debug('Now connected, connection Id=' + this.connection.id);
                 })
-                .fail(function () {
-                    if (this.debug)
-                        console.debug('Could not connect');
+                .fail(function () {               
+                    console.debug('Could not connect');
                 });
             this.running = true;
         }

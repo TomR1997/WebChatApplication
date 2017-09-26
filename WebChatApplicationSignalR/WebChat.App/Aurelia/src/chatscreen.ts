@@ -58,6 +58,7 @@ export class ChatScreen {
 
     constructor() {
         this.createHub('groupChatHub');
+        //this.setCallback('groupChatHub', 'sendMessage', console.log('test'), 'testCallback');
         this.start();
     }
 
@@ -74,11 +75,14 @@ export class ChatScreen {
         hubName = hubName.toLocaleLowerCase();
         if (!this.connection.proxies[hubName]) {
             var hubProxy = this.connection.createHubProxy(hubName);
-            hubProxy.on('sendMessage', function (data) {
+            /*hubProxy.on('sendMessage', function (data) {
                 console.log(data);
-            });     
+            });*/  
             this.connection.proxies[hubName].funcs = {};
-            //hubProxy.on('sendMessage', message => console.log('testing...'));
+            /*this.connection.proxies[hubName].on('sendMessage', function(data){
+                console.log(data + ' data');
+            });*/
+            hubProxy.on('sendMessage', message => console.log('testing...'));
         }
     }
 
@@ -101,10 +105,10 @@ export class ChatScreen {
         if (!this.running) {
             this.connection.start({ jsonp: true })
                 .done(function () {
-                    console.debug('Now connected, connection Id=' + this.connection.id);
+                    console.debug('Connection succeeded');
                 })
-                .fail(function () {               
-                    console.debug('Could not connect');
+                .fail(function (err) {               
+                    console.debug('Could not connect '+err);
                 });
             this.running = true;
         }

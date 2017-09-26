@@ -12,7 +12,7 @@ namespace WebChat.App.Hubs
     public class GroupChatHub : Hub
     {
         private readonly Dictionary<string, int> onlineUsers = new Dictionary<string, int>();
-        private string username;
+        private string username = "testname";
         /*{
             get
             {

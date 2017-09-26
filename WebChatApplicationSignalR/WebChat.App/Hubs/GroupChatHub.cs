@@ -12,7 +12,14 @@ namespace WebChat.App.Hubs
     public class GroupChatHub : Hub
     {
         private readonly Dictionary<string, int> onlineUsers = new Dictionary<string, int>();
-        private string username ="randomname";
+        private string username;
+        /*{
+            get
+            {
+                var userName = Context.RequestCookies["USERNAME"];
+                return userName == null ? "" : HttpUtility.UrlDecode(userName.Value);
+            }
+        }*/
 
         public override Task OnConnected()
         {

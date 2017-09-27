@@ -1,16 +1,6 @@
 ﻿import 'ms-signalr-client';
 import 'jquery';
-
 /*
-export class ChatScreen {
-
-    constructor() {
-        var test = $.hubConnection();
-        var eventProxy = test.createHubProxy("groupChatHub");
-        eventProxy.connection.start();
-        console.debug(eventProxy.hubName+"abc");
-    }
-
     sendMessage() {
         //$.connection.hub.start();
         this.connection.hub.start();
@@ -54,10 +44,13 @@ export class ChatScreen {
     connection: any;
     proxy = {};
     running = false;
-    //connection = null;
+    hubProxy: any;
+    message: any;
+    messageBox: any;
 
     constructor() {
         this.createHub('groupChatHub');
+        //this.createHub('simpleHub');
         //this.setCallback('groupChatHub', 'sendMessage', console.log('test'), 'testCallback');
         this.start();
     }
@@ -65,8 +58,8 @@ export class ChatScreen {
     createHub(hubName) {
         if (!this.connection) {
             //this.connection = $.hubConnection('{hubBaseUrl}');
-            //this.connection = $.hubConnection();
-            this.connection = $.hubConnection('http://localhost:51907/signalr', { useDefaultPath: false });
+            this.connection = $.hubConnection();
+            //this.connection = $.hubConnection('http://localhost:51907/signalr', { useDefaultPath: false });
             this.connection.logging = true;
 
             //The following can be used to pass certain data to the hub on connection such as user id.
@@ -74,7 +67,7 @@ export class ChatScreen {
         }
         hubName = hubName.toLocaleLowerCase();
         if (!this.connection.proxies[hubName]) {
-            var hubProxy = this.connection.createHubProxy(hubName);
+            this.hubProxy = this.connection.createHubProxy(hubName);
             /*hubProxy.on('sendMessage', function (data) {
                 console.log(data);
             });*/  
@@ -82,7 +75,9 @@ export class ChatScreen {
             /*this.connection.proxies[hubName].on('sendMessage', function(data){
                 console.log(data + ' data');
             });*/
-            hubProxy.on('sendMessage', message => console.log('testing...'));
+
+            this.hubProxy.on('sendMessage', message => this.onMessageReceived(message));
+            //this.hubProxy.on('sendMsg', message => console.log(message));
         }
     }
 
@@ -136,9 +131,47 @@ export class ChatScreen {
         }
     }
 
-    /*
-    sendMessage() {
-        this.start();
-        console.log("testing binding...");
-    }*/
+    sendMessage(msg: string) {
+        //this.start();
+        
+        /*$.extend(hub.client, {
+
+            publshMsg: function (data) {
+                $("#msg").append("<li><span class='p'>" + data.Name + "：</span>" + data.Msg + " <span class='time'>" + data.Time + "</span></li>")
+                $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
+                console.log(data.Name + ' ' + data.Msg);
+            },
+
+            publshUser: function (data) {
+                $("#count").text(data.length);
+                $("#users").empty();
+                $("#users").append('<option value="0">Everyone</option>');
+                for (var i = 0; i < data.length; i++) {
+                    $("#users").append('<option value="' + data[i] + '">' + data[i] + '</option>')
+                }
+
+            }
+        });
+
+        $("#btn-send").click(function () {
+            var msg = $("#txt-msg").val();
+            if (!msg) {
+                alert('Error...'); return false;
+            }
+            $("#txt-msg").val('');
+
+            //hub.server.sendMessage($("#users").val(), msg);
+            hub.invoke('SendMessage', { 'name': String, msg: String }).done(function () {
+                console.log('new message invocation');
+            }).fail(function (err) {
+                console.log('new message failed ' + err);
+                });;
+        });*/
+
+        this.hubProxy.invoke('InvokeMessage', msg);
+    }
+
+    onMessageReceived(latestMessage: string) {
+        console.log('New message received: ' + latestMessage);
+    }
 }

@@ -19,7 +19,8 @@ namespace WebChat.App.App_Start
                 map.UseCors(CorsOptions.AllowAll);
                 var hubConfiguration = new HubConfiguration
                 {
-                    EnableJSONP = true
+                    EnableJSONP = true,
+                    EnableDetailedErrors = true
                 };
                 map.RunSignalR(hubConfiguration);
             });

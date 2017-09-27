@@ -16,8 +16,10 @@ namespace WebChat.App.Hubs
         /*{
             get
             {
-                var userName = Context.RequestCookies["USERNAME"];
-                return userName == null ? "" : HttpUtility.UrlDecode(userName.Value);
+                var userName = Context.User.Identity.Name;
+                //var userName = Context.RequestCookies["USERNAME"];
+                return userName == null ? "" : HttpUtility.UrlDecode(userName);
+                //return userName == null ? "" : HttpUtility.UrlDecode(userName.Value);
             }
         }*/
 
@@ -46,7 +48,10 @@ namespace WebChat.App.Hubs
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            onlineUsers[username] = onlineUsers[username] - 1;
+            if (onlineUsers.Count > 0)
+            {
+                onlineUsers[username] = onlineUsers[username] - 1;
+            }
 
             if (onlineUsers[username] == 0)
             {
@@ -74,6 +79,15 @@ namespace WebChat.App.Hubs
         private dynamic FormatMessage(string name, string msg)
         {
             return new { Name = name, Msg = HttpUtility.HtmlEncode(msg), Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
+        }
+
+        public void InvokeMessage()
+        {
+            Clients.All.messageReceived("Message received at: " + DateTime.Now.ToString());
+        }
+        public interface IClient
+        {
+            void messageReceived(string msg);
         }
     }
 }

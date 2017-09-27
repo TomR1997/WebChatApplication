@@ -168,7 +168,7 @@ export class ChatScreen {
                 });;
         });*/
 
-        this.hubProxy.invoke('InvokeMessage', msg);
+        this.hubProxy.invoke('invokeMessage', msg);
     }
 
     onMessageReceived(latestMessage: string) {

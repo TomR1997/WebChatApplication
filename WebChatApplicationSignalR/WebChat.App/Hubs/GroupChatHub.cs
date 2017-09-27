@@ -9,7 +9,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 namespace WebChat.App.Hubs
 {
     [HubName("groupChatHub")]
-    public class GroupChatHub : Hub
+    public class GroupChatHub : Hub<GroupChatHub.IClient>
     {
         private readonly Dictionary<string, int> onlineUsers = new Dictionary<string, int>();
         private string username = "testname";
@@ -23,7 +23,7 @@ namespace WebChat.App.Hubs
             }
         }*/
 
-        public override Task OnConnected()
+        /*public override Task OnConnected()
         {
             Connect();
             return base.OnConnected();
@@ -79,11 +79,11 @@ namespace WebChat.App.Hubs
         private dynamic FormatMessage(string name, string msg)
         {
             return new { Name = name, Msg = HttpUtility.HtmlEncode(msg), Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
-        }
+        }*/
 
-        public void InvokeMessage()
+        public void invokeMessage(string msg)
         {
-            Clients.All.messageReceived("Message received at: " + DateTime.Now.ToString());
+            Clients.All.messageReceived("Message received at: " + DateTime.Now.ToString()+" "+ msg);
         }
         public interface IClient
         {

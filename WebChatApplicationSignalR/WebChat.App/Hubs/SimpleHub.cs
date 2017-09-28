@@ -25,7 +25,7 @@ namespace WebChat.App.Hubs
 
         public void Send(string name, string message)
         {
-            Clients.All.addNewMessageToPage(name, message);
+            Clients.All.addNewMessageToPage(message);
         }
     }
 }

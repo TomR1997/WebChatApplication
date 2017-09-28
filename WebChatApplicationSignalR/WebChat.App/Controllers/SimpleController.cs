@@ -9,7 +9,7 @@ namespace WebChat.App.Controllers
     public class SimpleController : Controller
     {
         // GET: Simple
-        public ActionResult Index()
+        public ActionResult ChatScreen()
         {
             return View();
         }

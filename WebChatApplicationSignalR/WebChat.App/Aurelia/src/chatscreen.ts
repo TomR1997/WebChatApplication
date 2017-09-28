@@ -88,9 +88,6 @@ export class ChatScreen {
 
     sendMessage() {
         var hub = this.hubProxy;
-
-        $("#msg").append("<li><span class='p'>" +'someName' + "：</span>" + this.message + " <span class='time'>" + 'date' + "</span></li>")
-        $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
         hub.invoke('Send', 'TestName', this.message);
        
         //hub.invoke('SendMessage', 'name', msg);
@@ -98,5 +95,7 @@ export class ChatScreen {
 
     onMessageReceived(latestMessage: string) {
         console.log('New message received: ' + latestMessage);
+        $("#msg").append("<li><span class='p'>" + 'someName' + "：</span>" + latestMessage + " <span class='time'>" + 'date' + "</span></li>")
+        $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
     }
 }

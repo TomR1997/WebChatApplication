@@ -1,44 +1,5 @@
 ﻿import 'ms-signalr-client';
 import 'jquery';
-/*
-    sendMessage() {
-        //$.connection.hub.start();
-        this.connection.hub.start();
-
-        var ticker = $.connection.hub.createHubProxy("groupChatHub");
-
-        //ticker.client
-        $.extend(ticker, {
-
-            publshMsg: function (data) {
-                $("#msg").append("<li><span class='p'>" + data.Name + "：</span>" + data.Msg + " <span class='time'>" + data.Time + "</span></li>")
-                $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
-            },
-
-            publshUser: function (data) {
-                $("#count").text(data.length);
-                $("#users").empty();
-                $("#users").append('<option value="0">Everyone</option>');
-                for (var i = 0; i < data.length; i++) {
-                    $("#users").append('<option value="' + data[i] + '">' + data[i] + '</option>')
-                }
-
-            }
-        });
-
-        $("#btn-send").click(function () {
-            var msg = $("#txt-msg").val();
-            if (!msg) {
-                alert('Error...'); return false;
-            }
-            $("#txt-msg").val('');
-
-            //ticker.server.
-            //ticker.sendMsg($("#users").val(), msg);
-            //ticker.invoke('sendMsg($("#users").val(), msg)');
-        });
-    }
-}*/
 
 export class ChatScreen {
     connection: any;
@@ -49,8 +10,8 @@ export class ChatScreen {
     messageBox: any;
 
     constructor() {
-        this.createHub('groupChatHub');
-        //this.createHub('simpleHub');
+        //this.createHub('groupChatHub');
+        this.createHub('simpleHub');
         //this.setCallback('groupChatHub', 'sendMessage', console.log('test'), 'testCallback');
         this.start();
     }
@@ -76,8 +37,8 @@ export class ChatScreen {
                 console.log(data + ' data');
             });*/
 
-            this.hubProxy.on('sendMessage', message => this.onMessageReceived(message));
-            //this.hubProxy.on('sendMsg', message => console.log(message));
+            //this.hubProxy.on('sendMessage', message => this.onMessageReceived(message));
+            this.hubProxy.on('send', message => console.log(message));
         }
     }
 
@@ -131,11 +92,10 @@ export class ChatScreen {
         }
     }
 
-    sendMessage(msg: string) {
-        //this.start();
-        
-        /*$.extend(hub.client, {
+    sendMessage() {
+        var hub = this.hubProxy;
 
+        /*$.extend(hub.client, {
             publshMsg: function (data) {
                 $("#msg").append("<li><span class='p'>" + data.Name + "：</span>" + data.Msg + " <span class='time'>" + data.Time + "</span></li>")
                 $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
@@ -151,9 +111,9 @@ export class ChatScreen {
                 }
 
             }
-        });
+        });*/
 
-        $("#btn-send").click(function () {
+        /*$("#btn-send").click(function () {
             var msg = $("#txt-msg").val();
             if (!msg) {
                 alert('Error...'); return false;
@@ -165,10 +125,23 @@ export class ChatScreen {
                 console.log('new message invocation');
             }).fail(function (err) {
                 console.log('new message failed ' + err);
-                });;
+                });
         });*/
+        var msg = $("#txt-msg").val();
+        hub.invoke('Send', 'TestName', msg);
 
-        this.hubProxy.invoke('invokeMessage', msg);
+        /*hub.client.addNewMessageToPage = function (name, message) {
+            $("#id").append('<ul style="list-style-type:square"><li><strong style="color:red;font-style:normal;font-size:medium;text-transform:uppercase">' + 'NameTest' + '  ' + '<strong style="color:black;font-style:normal;font-size:medium;text-transform:lowercase">said</strong>'
+                + '</strong>: ' + '<strong style="color:blue;font-style:oblique;font-size:medium">' + message + '</strong>' + '</li></ul>');
+        }*/
+
+
+        //hub.server.send('nameTest', msg);
+        $("#txt-msg").val();
+
+
+        //hub.invoke('SendMessage', 'name', msg);
+        //this.hubProxy.invoke('invokeMessage', msg);
     }
 
     onMessageReceived(latestMessage: string) {

@@ -23,5 +23,9 @@ namespace WebChat.App.Hubs
             Clients.Group("groupName").msg("Message sent to client");
         }
 
+        public void Send(string name, string message)
+        {
+            Clients.All.addNewMessageToPage(name, message);
+        }
     }
 }

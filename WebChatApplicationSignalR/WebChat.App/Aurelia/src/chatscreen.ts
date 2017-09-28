@@ -17,7 +17,6 @@ export class ChatScreen {
 
     createHub(hubName) {
         if (!this.connection) {
-            //this.connection = $.hubConnection('{hubBaseUrl}');
             this.connection = $.hubConnection();
 
             //this.connection = $.hubConnection('http://localhost:51907/signalr', { useDefaultPath: false });
@@ -31,6 +30,7 @@ export class ChatScreen {
             this.hubProxy = this.connection.createHubProxy(hubName); 
             this.connection.proxies[hubName].funcs = {};
 
+            //Subscribe to the hub, when publishMessage is called, call onMessageReceived.
             this.hubProxy.on('publishMessage', message => this.onMessageReceived(message));
             //this.hubProxy.on('addNewMessageToPage', message => this.onMessageReceived(message));
         }
@@ -88,7 +88,8 @@ export class ChatScreen {
 
     sendMessage() {
         var hub = this.hubProxy;
-      
+
+        //Invoke SendMessage at server side.
         hub.invoke('SendMessage', 'name', this.message);
         //hub.invoke('Send', 'TestName', this.message); 
     }

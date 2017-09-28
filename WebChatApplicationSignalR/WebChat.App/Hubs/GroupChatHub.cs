@@ -31,7 +31,7 @@ namespace WebChat.App.Hubs
 
         private void Connect()
         {
-            if (!onlineUsers.ContainsKey(username))
+            /*if (!onlineUsers.ContainsKey(username))
             {
                 onlineUsers.Add(username, 1);
 
@@ -43,12 +43,14 @@ namespace WebChat.App.Hubs
                 onlineUsers[username] = onlineUsers[username] + 1;
             }
 
+            Groups.Add(Context.ConnectionId, "GROUP-" + username);*/
+            Clients.All.publishMessage(FormatMessage("System message", username + " connected"));
             Groups.Add(Context.ConnectionId, "GROUP-" + username);
         }
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            if (onlineUsers.Count > 0)
+            /*if (onlineUsers.Count > 0)
             {
                 onlineUsers[username] = onlineUsers[username] - 1;
             }
@@ -60,6 +62,10 @@ namespace WebChat.App.Hubs
                 Clients.All.publishMessage(FormatMessage("System message", username + " disconnected"));
             }
 
+            Groups.Remove(Context.ConnectionId, "GROUP-" + username);
+            return base.OnDisconnected(stopCalled);*/
+
+            Clients.All.publishMessage(FormatMessage("System message", username + " disconnected"));
             Groups.Remove(Context.ConnectionId, "GROUP-" + username);
             return base.OnDisconnected(stopCalled);
         }
@@ -80,15 +86,5 @@ namespace WebChat.App.Hubs
         {
             return new { Name = name, Msg = HttpUtility.HtmlEncode(msg), Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
         }
-
-            
-        /*public void invokeMessage(string msg)
-        {
-            Clients.All.messageReceived("Message received at: " + DateTime.Now.ToString()+" "+ msg);
-        }
-        public interface IClient
-        {
-            void messageReceived(string msg);
-        }*/
     }
 }

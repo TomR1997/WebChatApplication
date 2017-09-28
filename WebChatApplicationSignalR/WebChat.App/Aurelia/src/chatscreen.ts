@@ -10,9 +10,8 @@ export class ChatScreen {
     userBox: any;
 
     constructor() {
-        //this.createHub('groupChatHub');
-        this.createHub('simpleHub');
-        //this.setCallback('groupChatHub', 'sendMessage', console.log('test'), 'testCallback');
+        this.createHub('groupChatHub');
+        //this.createHub('simpleHub');
         this.start();
     }
 
@@ -20,6 +19,7 @@ export class ChatScreen {
         if (!this.connection) {
             //this.connection = $.hubConnection('{hubBaseUrl}');
             this.connection = $.hubConnection();
+
             //this.connection = $.hubConnection('http://localhost:51907/signalr', { useDefaultPath: false });
             this.connection.logging = true;
 
@@ -31,8 +31,8 @@ export class ChatScreen {
             this.hubProxy = this.connection.createHubProxy(hubName); 
             this.connection.proxies[hubName].funcs = {};
 
-            //this.hubProxy.on('sendMessage', message => this.onMessageReceived(message));
-            this.hubProxy.on('addNewMessageToPage', message => this.onMessageReceived(message));
+            this.hubProxy.on('publishMessage', message => this.onMessageReceived(message));
+            //this.hubProxy.on('addNewMessageToPage', message => this.onMessageReceived(message));
         }
     }
 
@@ -88,14 +88,20 @@ export class ChatScreen {
 
     sendMessage() {
         var hub = this.hubProxy;
-        hub.invoke('Send', 'TestName', this.message);
-       
-        //hub.invoke('SendMessage', 'name', msg);
+      
+        hub.invoke('SendMessage', 'name', this.message);
+        //hub.invoke('Send', 'TestName', this.message); 
     }
 
-    onMessageReceived(latestMessage: string) {
-        console.log('New message received: ' + latestMessage);
-        $("#msg").append("<li><span class='p'>" + 'someName' + "：</span>" + latestMessage + " <span class='time'>" + 'date' + "</span></li>")
+    onMessageReceived(data){
+        $("#msg").append("<li><span class='p'>" + data.Name + "：</span>" + data.Msg + " <span class='time'>" +  data.Time + "</span></li>");
         $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
     }
+
+    //FOR SIMPLEHUB
+    /*onMessageReceivedlatestMessage: string) {
+        console.log('New message received: ' + latestMessage);
+        $("#msg").append("<li><span class='p'>" + 'someName' + "：</span>" + latestMessage + " <span class='time'>" + 'date' + "</span></li>");
+        $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
+    }*/
 }

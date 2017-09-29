@@ -89,11 +89,12 @@ export class ChatScreen {
         //Invoke SendMessage at server side.
         this.hubProxy.invoke('SendMessage', 'name', this.message);
 
+        this.message = '';
         //this.hubProxy.invoke('Send', 'TestName', this.message);   //FOR SIMPLEHUB
     }
 
     private onMessageReceived(data){
-        $("#msg").append("<li><span class='p'>" + data.Name + "：</span>" + data.Msg + " <span class='time'>" +  data.Time + "</span></li>");
+        $("#msg").append("<li><span class='p'><b>" + data.Name + "</b>：</span>" + data.Msg + " <span class='time'> <font color ='#ccccb3'><small><i> &nbsp;" +  data.Time + "</i></small></font></span></li>");
         $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
     }
 

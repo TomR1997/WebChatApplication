@@ -2,20 +2,19 @@
 import 'jquery';
 
 export class ChatScreen {
-    connection: any;
-    proxy = {};
-    running = false;
-    hubProxy: any;
-    message: string;
-    userBox: any;
+    private connection: any;
+    private running: boolean;
+    private hubProxy: any;
+    private message: string;
 
     constructor() {
+        this.running = false;
         this.createHub('groupChatHub');
         //this.createHub('simpleHub');
         this.start();
     }
 
-    createHub(hubName) {
+    private createHub(hubName) {
         if (!this.connection) {
             this.connection = $.hubConnection();
 
@@ -36,7 +35,7 @@ export class ChatScreen {
         }
     }
 
-    setCallback(hubName, funcName, callBack, cbNameOverride = null) {
+    private setCallback(hubName, funcName, callBack, cbNameOverride = null) {
         hubName = hubName.toLocaleLowerCase();
         if (!this.connection.proxies[hubName].funcs[funcName]) {
             this.connection.proxies[hubName].funcs[funcName] = {};
@@ -51,7 +50,7 @@ export class ChatScreen {
         };
     }
 
-    start() {
+    private start() {
         if (!this.running) {
             this.connection.start({ jsonp: true })
                 .done(function () {
@@ -64,7 +63,7 @@ export class ChatScreen {
         }
     }
 
-    stop(hubName, funcName, callBack, cbNameOverride = null) {
+    private stop(hubName, funcName, callBack, cbNameOverride = null) {
         if (this.running) {
             console.debug('Hub Stopping');
             if (this.connection.proxies[hubName]) {
@@ -86,7 +85,7 @@ export class ChatScreen {
         }
     }
 
-    sendMessage() {
+    private sendMessage() {
         var hub = this.hubProxy;
 
         //Invoke SendMessage at server side.
@@ -94,7 +93,7 @@ export class ChatScreen {
         //hub.invoke('Send', 'TestName', this.message); 
     }
 
-    onMessageReceived(data){
+    private onMessageReceived(data){
         $("#msg").append("<li><span class='p'>" + data.Name + "：</span>" + data.Msg + " <span class='time'>" +  data.Time + "</span></li>");
         $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
     }

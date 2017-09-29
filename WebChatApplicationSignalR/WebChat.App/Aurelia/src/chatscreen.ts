@@ -10,7 +10,7 @@ export class ChatScreen {
     constructor() {
         this.running = false;
         this.createHub('groupChatHub');
-        //this.createHub('simpleHub');
+        //this.createHub('simpleHub');  //FOR SIMPLEHUB
         this.start();
     }
 
@@ -86,11 +86,10 @@ export class ChatScreen {
     }
 
     private sendMessage() {
-        var hub = this.hubProxy;
-
         //Invoke SendMessage at server side.
-        hub.invoke('SendMessage', 'name', this.message);
-        //hub.invoke('Send', 'TestName', this.message); 
+        this.hubProxy.invoke('SendMessage', 'name', this.message);
+
+        //this.hubProxy.invoke('Send', 'TestName', this.message);   //FOR SIMPLEHUB
     }
 
     private onMessageReceived(data){
@@ -98,8 +97,8 @@ export class ChatScreen {
         $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
     }
 
-    //FOR SIMPLEHUB
-    /*onMessageReceivedlatestMessage: string) {
+
+    /*onMessageReceivedlatestMessage: string) {     //FOR SIMPLEHUB
         console.log('New message received: ' + latestMessage);
         $("#msg").append("<li><span class='p'>" + 'someName' + "：</span>" + latestMessage + " <span class='time'>" + 'date' + "</span></li>");
         $("#msg").parents("div")[0].scrollTop = $("#msg").parents("div")[0].scrollHeight;
